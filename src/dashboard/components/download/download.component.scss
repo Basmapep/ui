@@ -1,0 +1,146 @@
+.home {
+    // margin: 30px;
+    background-color: #58a12b;
+    display: flex;
+    justify-content: center;
+    // border-radius: 10px;
+    // height: 40vh;
+    overflow-y: auto;
+    align-items: center;
+    padding-top: 9.25rem;
+    /* 36px */
+    padding-bottom: 9.25rem;
+    /* 36px */
+}
+
+.btn {
+    background-color: white;
+    color: black;
+    border: 1px;
+    border-bottom-right-radius: 10px !important;
+    border-top-right-radius: 10px !important;
+}
+
+.btn1 {
+    background-color: #58a12b;
+    color: white;
+    border: 1px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.grid-cls {
+    width: min(95vw, 57rem);
+}
+
+h1 {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 3.052rem;
+    font-weight: 700;
+    text-align: center;
+    color: white;
+}
+
+.example-container {
+    // height: 400px;
+    overflow: auto;
+    border: 2px solid;
+    border-top-color: #58a12b;
+    border-bottom-color: #fefefe;
+    border-left-color: #58a12b;
+    border-right-color: #58a12b;
+    border-top-left-radius: 10px;
+    /* 8px */
+    border-top-right-radius: 10px;
+    /* 8px */
+}
+
+.pagination {
+    margin-bottom: 10px;
+    border: 2px solid #58a12b;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.w-full {
+    padding-top: 30px;
+    padding-right: 30px;
+    padding-bottom: 100px;
+    padding-left: 30px;
+}
+
+table {
+    width: 100%;
+    // border: 1px solid ;
+    // box-shadow: 10px 20px 20px rgba(0, 0, 0, 0.4);
+}
+
+th {
+    // border: 1px solid ;
+    background-color: #58a12b;
+    color: white;
+}
+
+.form-select {
+    max-width: 115px;
+    background-color: white;
+    color: black;
+}
+
+.form-select1 {
+    max-width: 170px;
+}
+
+.form-select2 {
+    max-width: 185px;
+}
+
+.form-select3 {
+    max-width: 150px;
+}
+
+
+.form-select4 {
+    max-width: 140px;
+}
+
+.form-select5 {
+    max-width: 205px;
+}
+.form-select6 {
+    max-width: 205px;
+}
+.icons {
+    width: 22px;
+}
+
+.plus {
+    padding: 8px;
+    border: 0 !important;
+    border-radius: 10px;
+    border-top-left-radius: 10px !important;
+    border-bottom-left-radius: 10px !important;
+    //    margin-left: 10px !important;
+}
+
+.plusRemove {
+    padding: 8px;
+    border: 0 !important;
+    border-radius: 10px;
+    border-top-left-radius: 10px !important;
+    border-bottom-left-radius: 10px !important;
+    margin-left: 10px !important;
+}
+
+.input-group {
+    margin-bottom: 10px;
+}
+
+th {
+    font-size: 15px;
+    font-weight: 500;
+}
+
+td {
+    font-weight: 600;
+}

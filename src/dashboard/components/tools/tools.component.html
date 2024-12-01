@@ -1,0 +1,47 @@
+<div class="max">
+
+    <div class="row border">
+        <div class="col-12">
+            <mat-accordion>
+
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title> Blast Tool</mat-panel-title>
+                        <mat-panel-description>
+                            Blast your target sequence against PiperDB or NCBI nt database.
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <div class="basttool">
+                        <span class="hov1">Blast PiperDB</span>
+                    </div>
+                    <div class="basttool1">
+                        <!-- <span href="https://www.w3schools.com" class="hov">NCBI BLAST</span> -->
+                        <a style="color: white;" target="_blank" href="https://blast.ncbi.nlm.nih.gov/Blast.cgi?PROGRAM=blastp&PAGE_TYPE=BlastSearch&LINK_LOC=blasthome"> NCBI BLAST</a>
+                    </div>
+                </mat-expansion-panel>
+            </mat-accordion>
+
+        </div>
+        <!-- <div class="col-6">
+            Blast your target sequence against PiperDB or NCBI nt database.
+        </div> -->
+    </div>
+
+    <div class="row border">
+        <div (click)="goToMapTool()" class="col-2">
+            MAP Tool
+        </div>
+        <div class="col-10">
+            Map your target sequence against Piperpep or NCBI nt database.
+        </div>
+    </div>
+
+    <div class="row border">
+        <div class="col-2" (click)="pepCalTool()">
+            PepCal Tool
+        </div>
+        <div class="col-10">
+           Analyze your Peptide properties target sequence against Piperpep or NCBI nt database.
+        </div>
+    </div>
+</div>

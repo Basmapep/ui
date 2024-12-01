@@ -1,0 +1,171 @@
+.container {
+    // width: 400px;
+    margin: 20px auto;
+    text-align: center;
+
+    border: 2px dashed #ccc;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    cursor: pointer;
+}
+
+.drag-drop-area {
+    border: 2px dashed #ccc;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    // height: 300px;
+}
+
+.drag-over {
+    border-color: #007bff;
+    background-color: #e6f7ff;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin: 5px 0;
+}
+
+.list-group-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.file-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 80%;
+}
+
+.file-icon i {
+    font-size: 1.2rem;
+}
+
+button {
+    margin-top: 10px;
+}
+
+.btn-primary {
+    font-size: 16px;
+    padding: 10px 20px;
+}
+
+.btn-success {
+    font-size: 16px;
+    padding: 10px 20px;
+}
+
+.truncate-text{
+    display: inline-block;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.fileItem1 {
+    // width: calc(25% - 6px);
+    width: 100%;
+    overflow: hidden;
+    height: fit-content;
+    margin: 3px;
+    padding: 10px;
+    display: block;
+    position: relative;
+    float: left;
+    border: 2px dashed #778899;
+    border-radius: 5px;
+    transition: .3s ease;
+}
+
+.fileItem1:hover {
+    border: 2px solid #e19494;
+    background-color: #e19494;
+}
+
+.fileItem1:hover .fileItemIcon::before {
+    content: "\f00d";
+    color: whitesmoke;
+}
+
+.fileItem1:hover .fileItemText {
+    color: whitesmoke;
+}
+
+.fileItemIconDiv {
+    text-align: center;
+}
+
+.fileItemIcon::before {
+    font-style: normal;
+    content: "\f15b";
+    color: #778899;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+}
+
+.fileItemText {
+    text-align: center;
+    margin-top: 10px;
+    height: 40px;
+}
+
+.filesupload {
+    max-width: 1320px;
+    margin: 20px auto;
+}
+
+//button
+
+/* From Uiverse.io by omar49511 */
+.container-btn-file {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    background-color: #307750;
+    color: #fff;
+    border-style: none;
+    padding: 1em 2em;
+    border-radius: 0.5em;
+    overflow: hidden;
+    z-index: 1;
+    box-shadow: 4px 8px 10px -3px rgba(0, 0, 0, 0.356);
+    transition: all 250ms;
+}
+
+.container-btn-file input[type="file"] {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.container-btn-file>svg {
+    margin-right: 1em;
+}
+
+.container-btn-file::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 0;
+    border-radius: 0.5em;
+    background-color: #469b61;
+    z-index: -1;
+    transition: all 350ms;
+}
+
+.container-btn-file:hover::before {
+    width: 100%;
+}

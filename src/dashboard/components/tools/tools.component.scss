@@ -1,0 +1,63 @@
+.max{
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.col-2{
+    text-align: center;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: larger;
+}
+
+:host ::ng-deep .mat-expansion-panel:not([class*=mat-elevation-z]) {
+    box-shadow: none;
+}
+
+.mat-expansion-panel{
+    background-color: #58a12b;
+    color: white;
+}
+
+mat-panel-title {
+    color: rgba(254, 251, 251, 0.87);
+    font-weight: 500;
+    font-size: larger;
+}
+
+mat-panel-description{
+    color: rgba(254, 251, 251, 0.87);
+}
+
+.basttool{
+    font-size: larger;
+    padding: 5px;
+   
+}
+
+.basttool1{
+    font-size: larger;
+    padding: 5px;
+    // cursor: pointer;
+}
+
+:hover .hov{
+    cursor: pointer;
+    // text-decoration: underline;
+}
+
+
+:hover .hov1{
+    // text-decoration: underline;
+    cursor: pointer;
+}
+
+.border{
+    color: rgba(254, 251, 251, 0.87);
+    border: 1px solid black !important;
+    border-radius: 5px;
+    padding: 8px;
+    margin-top: 10px;
+    background-color: #58a12b;
+    // font-size: larger;
+}

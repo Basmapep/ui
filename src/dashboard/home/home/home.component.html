@@ -1,0 +1,406 @@
+<!-- <app-navbar></app-navbar> -->
+
+
+<div class="home">
+    <div class="grid-cls">
+        <div class="containers">
+            <div>
+                <h1 class="type anih1" style="padding-bottom: 20px; color: #fff;">Find Rice Peptide</h1>
+            </div>
+        </div>
+
+        <form action="" [formGroup]="peptform">
+
+            <div class="mt-4">
+                <div class="input-group">
+                    <select [ngClass]="{'form-select1': category_Value == 'Peptide sequence',
+                    'form-select2': category_Value == 'Peptide modification',
+                    'form-select3': category_Value == 'Peptide Length',
+                    'form-select4': category_Value == 'Peptide Mass'}" formControlName="category_val"
+                        (change)="Select_Category($event)" class="form-select" aria-label="Select option">
+                        <option disabled value="0">Category</option>
+                        <option *ngFor="let item of category; let i = index" [value]="item">{{item}}</option>
+                    </select>
+
+                    <input formControlName="search" type="text" class="form-control" placeholder="Search..."
+                        aria-label="Search" />
+
+                    <button (click)="gotopeptide()" class="btn btn-outline-secondary" type="button" id="button-addon2">
+                        <img class="icons" src="../../../assets/icons/magnifier.png" alt="">
+                    </button>
+
+                </div>
+            </div>
+
+
+
+        </form>
+        <div style="padding-top: 8px; color: #fff;">
+            Examples for search: Glutelin, Carbamidomethyl, Q0JJ36, PEP.SEQ = CGHHUYDAS, Score >= 20
+        </div>
+    </div>
+
+</div>
+
+<!-- <div style="padding-left: 8rem; padding-right: 8rem; text-align: justify; margin-bottom: 50px;">
+    <div style="padding: 10px; font-size: large; font-weight: 500;">
+        The Rice Peptide Search Database is a groundbreaking resource developed by the Rice Institute in Thanjavur, in
+        collaboration with Ponnaiya's Code and Genome Pvt. Ltd., Madurai. This innovative platform aims to revolutionize
+        rice research by providing a specialized repository dedicated to rice-derived peptides. With the increasing
+        global
+        demand for sustainable agricultural practices and healthier food options, the database focuses on uncovering the
+        therapeutic potential and biological properties of rice peptides.
+    </div>
+
+    <div style="padding: 10px; font-size: large; font-weight: 500;">
+        Rice peptides are short chains of amino acids known for their diverse bioactive properties, including
+        antimicrobial,
+        antioxidant, and anti-inflammatory effects. These properties make them valuable in pharmaceuticals,
+        nutraceuticals,
+        and crop improvement. The Rice Peptide Search Database offers researchers access to comprehensive peptide
+        sequence
+        information, functional annotations, and experimental data, enabling a deeper understanding of rice genomics and
+        its
+        applications in biotechnology.
+    </div>
+
+
+    <div style="padding: 10px; font-size: large; font-weight: 500;">
+        <span style="text-decoration: underline; font-size: x-large;"> Key features of the database include:</span>
+        <ul style="padding-top: 10px; list-style-type: none ;">
+            <li> <b>Comprehensive Peptide Data: </b> The database houses an extensive collection of peptide sequences
+                derived
+                from various
+                rice species, each annotated with functional information.</li>
+
+            <li> <b>Advanced Search Tools:</b> Sophisticated search algorithms, developed by Ponnaiya's Code, allow
+                users to
+                quickly locate
+                peptides of interest based on their sequence, function, or bioactivity.</li>
+
+            <li><b>Functional Annotations:</b> The database includes detailed annotations for each peptide, such as
+                bioactivity profiles,
+                potential therapeutic uses, and gene ontology classifications.</li>
+
+            <li> <b>Interactive Tools:</b> Users can visualize peptide structures, compare sequences across species, and
+                explore potential
+                applications in medicine, agriculture, and food science.</li>
+
+            <li> <b>Collaboration Ready: </b>
+                The database is designed to foster collaboration among researchers and institutions,
+                encouraging the sharing of insights, experimental results, and innovations.</li>
+
+            <li> This database, a product of a collaboration between leading research institutions and biotech
+                companies, is
+                poised
+                to advance the study of rice peptides, offering immense potential for breakthroughs in agriculture,
+                health,
+                and
+                sustainability. It stands as a testament to the expertise and dedication of the teams at the Rice
+                Institute,
+                Thanjavur, and Genome Pvt. Ltd., Madurai, who continue to drive cutting-edge research in plant genomics.
+            </li>
+
+        </ul>
+
+    </div>
+</div> -->
+
+<article>
+    <h1>Peptide Database</h1>
+    <p class="p">The Rice Peptide Search Database is a groundbreaking resource developed by the Rice Institute in
+        Thanjavur, in
+        collaboration with Ponnaiya's Code and Genome Pvt. Ltd., Madurai. </p>
+    <p>This innovative platform aims to revolutionize
+        rice research by providing a specialized repository dedicated to rice-derived peptides. With the increasing
+        global demand for sustainable agricultural practices and healthier food options, the database focuses on
+        uncovering the therapeutic potential and biological properties of rice peptides.</p>
+
+    <p>
+        Rice peptides are short chains of amino acids known for their diverse bioactive properties, including
+        antimicrobial, antioxidant, and anti-inflammatory effects. These properties make them valuable in
+        pharmaceuticals, nutraceuticals, and crop improvement. The Rice Peptide Search Database offers researchers
+        access to comprehensive peptide sequence information, functional annotations, and experimental data, enabling a
+        deeper understanding of rice genomics and its applications in biotechnology.
+    </p>
+    <h2>Key features of the database include:</h2>
+    <ul style="padding-top: 10px; list-style-type: none ;">
+        <li> <b>Comprehensive Peptide Data: </b> The database houses an extensive collection of peptide sequences
+            derived
+            from various
+            rice species, each annotated with functional information.</li>
+
+        <li> <b>Advanced Search Tools:</b> Sophisticated search algorithms, developed by Ponnaiya's Code, allow
+            users to
+            quickly locate
+            peptides of interest based on their sequence, function, or bioactivity.</li>
+
+        <li><b>Functional Annotations:</b> The database includes detailed annotations for each peptide, such as
+            bioactivity profiles,
+            potential therapeutic uses, and gene ontology classifications.</li>
+
+        <li> <b>Interactive Tools:</b> Users can visualize peptide structures, compare sequences across species, and
+            explore potential
+            applications in medicine, agriculture, and food science.</li>
+
+        <li> <b>Collaboration Ready: </b>
+            The database is designed to foster collaboration among researchers and institutions,
+            encouraging the sharing of insights, experimental results, and innovations.</li>
+
+        <li> This database, a product of a collaboration between leading research institutions and biotech
+            companies, is
+            poised
+            to advance the study of rice peptides, offering immense potential for breakthroughs in agriculture,
+            health,
+            and
+            sustainability. It stands as a testament to the expertise and dedication of the teams at the Rice
+            Institute,
+            Thanjavur, and Genome Pvt. Ltd., Madurai, who continue to drive cutting-edge research in plant genomics.
+        </li>
+
+    </ul>
+</article>
+
+
+<!-- <marquee behavior="" direction="">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
+        <div class="col">
+            <div class="container cardnew1">
+                <div class="items head none">
+                    <p class="title">Proteins</p>
+                    <p class="sub">UniProt Knowledgebase</p>
+                </div>
+                <div class="overlay">
+                    <div class="items"></div>
+                    <div class="items head">
+                        <p>Proteins</p>
+                        <p class="sub">UniProt Knowledgebase</p>
+                        <hr>
+                    </div>
+                    <div style="font-size: x-large; text-align: center;
+                    transform: translateY(40px);
+                    transition: all 0.7s;" class="">
+                        <small class="old">Cell division protein kinase 5</small>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="container cardnew2">
+                <div class="items head none">
+                    <p class="title">Species</p>
+                    <p class="sub">Proteomes</p>
+                    <hr>
+                </div>
+                <div class="overlay">
+                    <div class="items"></div>
+                    <div class="items head">
+                        <p>Species</p>
+                        <p class="sub">Proteomes</p>
+                        <hr>
+                    </div>
+                    <div class="items price">
+                        <small class="old">Protein sets for species with sequenced genomes from across the tree of
+                            life</small>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="container cardnew3">
+                <div class="items head none">
+                    <p class="title">Glutelin</p>
+                    <p class="sub">UniRef</p>
+                    <hr>
+                </div>
+                <div class="overlay">
+                    <div class="items"></div>
+                    <div class="items head">
+                        <p>Glutelin</p>
+                        <p class="sub">UniRef</p>
+                        <hr>
+                    </div>
+                    <div class="items price">
+                        <small class="old">Clusters of protein sequences at 100%, 90% & 50% identity</small>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col mb-4">
+            <div class="container cardnew4">
+                <div class="items head none">
+                    <p class="title">Carbamidomethyl</p>
+                    <p class="sub">UniParc</p>
+                    <hr>
+                </div>
+                <div class="overlay">
+                    <div class="items"></div>
+                    <div class="items head">
+                        <p>Carbamidomethyl</p>
+                        <p class="sub">UniParc</p>
+                        <hr>
+                    </div>
+                    <div class="items price">
+                        <small class="old">Non-redundant archive of publicly available protein sequences seen across
+                            different databases</small>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</marquee> -->
+<!-- <marquee behavior="" direction=""> -->
+<div style=" padding-top: 55px; padding-bottom: 55px;">
+    <div class="grids block">
+        <div class="bg-img">
+            <div style="padding: 10px;">
+                <div style="font-size: 1.5rem;" class="title">Proteins</div>
+                <p class="sub" style="padding-top: 20px;">UniProt Knowledgebase</p>
+                <div style="font-size: larger; padding-top: 20px;">
+                    Cell division protein kinase 5
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-img2">
+            <div style="padding: 10px;">
+                <div style="font-size: 1.5rem;" class="title">Species</div>
+                <p class="sub" style="padding-top: 20px;">Proteomes</p>
+                <div style="font-size: larger; padding-top: 20px;">
+                    Protein sets for species with sequenced genomes from across the tree of life
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-img3">
+            <div style="padding: 10px;">
+                <div style="font-size: 1.5rem;" class="title">Glutelin</div>
+                <p class="sub" style="padding-top: 20px;">UniRef</p>
+                <div style="font-size: larger; padding-top: 20px;">
+                    Clusters of protein sequences at 100%, 90% & 50% identity
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-img4">
+            <div style="padding: 10px;">
+                <div style="font-size: 1.5rem;" class="title">Carbamidomethyl</div>
+                <p class="sub" style="padding-top: 20px;">UniParc</p>
+                <div style="font-size: larger; padding-top: 20px;">
+                    Non-redundant archive of publicly available protein sequences seen across different databases
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+<div class="w-full" style="text-align: center;">
+    <h1 style="padding: 30px;">
+        <svg xmlns="http://www.w3.org/2000/svg" style="width: 40px;"
+            viewBox="0 0 512 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+            <path
+                d="M176 88l0 40 160 0 0-40c0-4.4-3.6-8-8-8L184 80c-4.4 0-8 3.6-8 8zm-48 40l0-40c0-30.9 25.1-56 56-56l144 0c30.9 0 56 25.1 56 56l0 40 28.1 0c12.7 0 24.9 5.1 33.9 14.1l51.9 51.9c9 9 14.1 21.2 14.1 33.9l0 92.1-128 0 0-32c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 32-128 0 0-32c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 32L0 320l0-92.1c0-12.7 5.1-24.9 14.1-33.9l51.9-51.9c9-9 21.2-14.1 33.9-14.1l28.1 0zM0 416l0-64 128 0c0 17.7 14.3 32 32 32s32-14.3 32-32l128 0c0 17.7 14.3 32 32 32s32-14.3 32-32l128 0 0 64c0 35.3-28.7 64-64 64L64 480c-35.3 0-64-28.7-64-64z" />
+        </svg>
+        Analysis Tools
+    </h1>
+
+    <div class="blockright row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
+        <div class="col">
+            <div class="container cardnewblast">
+                <div class="items head none">
+                    <p class="title">Blast</p>
+                    <!-- <p class="sub">UniProt Knowledgebase</p> -->
+                </div>
+                <div class="overlay">
+                    <div class="items"></div>
+                    <div class="items headTools">
+                        <p style="text-align: start;">Blast</p>
+                        <!-- <p class="sub">UniProt Knowledgebase</p> -->
+                        <hr>
+                    </div>
+                    <div class="items price">
+                        <p class="old">Search with a sequence to find homologs through pairwise sequence
+                            alignment</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="container cardnewlustration">
+                <div class="items head none">
+                    <p class="title">Align</p>
+                    <hr>
+                </div>
+                <div class="overlay">
+                    <div class="items"></div>
+                    <div class="items headTools">
+                        <p style="text-align: start;">Align</p>
+                        <hr>
+                    </div>
+                    <div class="items price">
+                        <small class="old">Align two or more protein sequences with Clustal Omega to find conserved
+                            regions</small>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="container cardnewid">
+                <div class="items head none">
+                    <p style="text-align: start;" class="title">PhytAMP</p>
+                    <hr>
+                </div>
+                <div class="overlay">
+                    <div class="items"></div>
+                    <div class="items headTools">
+                        <p style="text-align: start;">PhytAMP</p>
+                        <hr>
+                    </div>
+                    <div class="items price">
+                        <small class="old">Clusters of protein sequences at 100%, 90% & 50% identity</small>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col mb-4">
+            <div class="container cardnewpep">
+                <div class="items head none">
+                    <p class="title" style="color: black;">CAMPR3</p>
+                    <hr>
+                </div>
+                <div class="overlay">
+                    <div class="items"></div>
+                    <div class="items headTools">
+                        <p style="text-align: start;">CAMPR3</p>
+                        <hr>
+                    </div>
+                    <div class="items price">
+                        <small class="old">Search with a peptide sequence to find all UniProt proteins that contain
+                            exact matches</small>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,126 @@
+<div class="body">
+    <div class="container">
+        <form [formGroup]="signupForm">
+            <h2>Sign Up</h2>
+            <!-- <div class="input-field">
+                <input formControlName="firstName" type="text" required />
+                <label>First Name</label>
+            </div>
+            <small *ngIf="signupForm.get('firstName')?.invalid && signupForm.get('firstName')?.touched">First Name is
+                Required</small> -->
+            <mat-form-field appearance="fill">
+                <mat-label>First Name</mat-label>
+                <input formControlName="firstName" type="text" matInput placeholder="Placeholder">
+                <mat-hint *ngIf="signupForm.get('firstName')?.invalid && signupForm.get('firstName')?.touched">
+                    First Name is Required</mat-hint>
+            </mat-form-field>
+
+            <!-- <div class="input-field">
+                <input formControlName="lastName" type="text" required />
+                <label>Last Name</label>
+            </div>
+            <small *ngIf="signupForm.get('lastName')?.invalid && signupForm.get('lastName')?.touched">Last Name is
+                Required</small> -->
+            <mat-form-field appearance="fill">
+                <mat-label>Last Name</mat-label>
+                <input formControlName="lastName" type="text" matInput placeholder="Placeholder">
+                <mat-hint *ngIf="signupForm.get('lastName')?.invalid && signupForm.get('lastName')?.touched">
+                    Last Name is Required</mat-hint>
+            </mat-form-field>
+
+            <!-- <div class="input-field">
+                <input formControlName="username" type="text" placeholder="" required />
+                <label>User Name</label>
+            </div>
+            <small *ngIf="signupForm.get('username')?.invalid && signupForm.get('username')?.touched">User Name is
+                Required</small> -->
+
+                <mat-form-field appearance="fill">
+                    <mat-label>User Name</mat-label>
+                    <input formControlName="username" type="text" matInput placeholder="abc@gmail.com">
+                    <mat-hint *ngIf="signupForm.get('username')?.invalid && signupForm.get('username')?.touched">
+                        User Name is Required</mat-hint>
+                </mat-form-field>
+
+            <!-- <div class="input-field">
+                <input formControlName="phoneNo" type="number" required />
+                <label>Phone Number</label>
+            </div>
+            <small *ngIf="signupForm.get('phoneNo')?.invalid && signupForm.get('phoneNo')?.touched">Phone
+                Number is Required</small> -->
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Phone Number</mat-label>
+                    <input formControlName="phoneNo" type="number" matInput placeholder="9857485964">
+                    <mat-hint *ngIf="signupForm.get('phoneNo')?.invalid && signupForm.get('phoneNo')?.touched">
+                        Phone Number is Required</mat-hint>
+                </mat-form-field>
+
+            <!-- <div class="input-field">
+                <input formControlName="email" type="text" required />
+                <label>Enter email</label>
+            </div>
+            <small
+                *ngIf="signupForm.get('email')?.invalid && signupForm.get('email')?.touched && signupForm.get('email')?.hasError('required')">Enter
+                email is Required</small>
+            <small *ngIf="signupForm.get('email')?.errors && signupForm.get('email')?.hasError('pattern')">Enter a
+                Valid email ID</small> -->
+                <mat-form-field appearance="fill">
+                    <mat-label>Email</mat-label>
+                    <input formControlName="email" type="text" matInput placeholder="abc@gmail.com">
+                    <mat-hint *ngIf="signupForm.get('email')?.invalid && signupForm.get('email')?.touched">
+                        Email is Required</mat-hint>
+                        <mat-hint  *ngIf="signupForm.get('email')?.errors && signupForm.get('email')?.hasError('pattern')">
+                            Enter a Valid email ID</mat-hint>
+                </mat-form-field>
+
+            <!-- <div class="input-field">
+                <input formControlName="passwordHash" [type]=password required />
+              
+                <label>Enter password</label>
+            </div>
+            <small *ngIf="signupForm.get('passwordHash')?.invalid && signupForm.get('passwordHash')?.touched">Enter
+                password
+                is Required</small>
+
+            <div class="input-field">
+                <input (keyup)="confirmPassword($event)" formControlName="confirmPassword" type="password" required />
+                <label>Confirm password</label>
+            </div>
+            <small
+                *ngIf="signupForm.get('confirmPassword')?.invalid && signupForm.get('confirmPassword')?.touched">Confirm
+                password is Required</small> -->
+
+            <mat-form-field appearance="fill">
+                <mat-label>Password</mat-label>
+                <input [type]="passwordVisible ? 'text' : 'password'" formControlName="passwordHash" matInput
+                    placeholder="password">
+                <img src="../../assets/icons/{{ passwordVisible ? 'visible.png' : 'hidden.png' }}"
+                    class="toggle-password" alt="toggle password visibility" (click)="togglePasswordVisibility()" />
+                <mat-hint *ngIf="signupForm.get('passwordHash')?.invalid && signupForm.get('passwordHash')?.touched">
+                    Enter password is Required</mat-hint>
+
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Confirm password</mat-label>
+                <input [type]="confirmPasswordVisible ? 'text' : 'password'" formControlName="confirmPassword" matInput
+                    placeholder="Placeholder">
+                <img src="../../assets/icons/{{ confirmPasswordVisible ? 'visible.png' : 'hidden.png' }}"
+                    class="toggle-password" alt="toggle password visibility"
+                    (click)="toggleConfirmPasswordVisibility()" />
+                <mat-hint
+                    *ngIf="signupForm.get('confirmPassword')?.invalid && signupForm.get('confirmPassword')?.touched">
+                    Confirm password is Required</mat-hint>
+
+            </mat-form-field>
+
+
+            <!-- <button type="submit">Log In</button> -->
+            <button type="submit" (click)="save()" class="btn btn-light">Sign Up</button>
+            <div class="Create-account">
+                <p>Already have an account? <a (click)="goToSignIn()">Sign In</a></p>
+            </div>
+        </form>
+    </div>
+</div>

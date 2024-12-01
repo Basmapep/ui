@@ -1,0 +1,81 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~xterm/css/xterm.css'; // Use ~ to indicate it's a node module
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    height: 100%;
+    background: #cffdd9;
+    // font-family: Georgia, serif !important;
+    font-family: "Merriweather", serif !important;
+    margin: 0;
+
+}
+
+
+
+//Loader
+
+.table-container {
+    position: relative;
+    /* Make the table container the reference point */
+}
+
+.loader-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgb(168 183 162 / 80%);
+    /* Light overlay */
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+    /* Prevent interaction */
+}
+
+.fade {
+    opacity: 0.5;
+    /* Table fades when loading */
+    pointer-events: none;
+    /* Disable interactions */
+    transition: opacity 0.5s ease;
+    /* Smooth fade transition */
+}
+
+.textWrapper {
+    height: fit-content;
+    min-width: 3rem;
+    width: fit-content;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 0.25ch;
+    position: relative;
+    z-index: 0;
+    color: rgb(18, 16, 16);
+}
+
+.invertbox {
+    position: absolute;
+    height: 100%;
+    aspect-ratio: 1/1;
+    left: 0;
+    top: 0;
+    border-radius: 20%;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: invert(100%);
+    animation: move 2s ease-in-out infinite;
+}
+
+@keyframes move {
+    50% {
+        left: calc(100% - 3rem);
+    }
+}

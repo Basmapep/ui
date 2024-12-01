@@ -1,0 +1,124 @@
+<div class="max" *ngIf="!showTable">
+    <div class="text">
+        <h1>PiperPep Map</h1>
+        <p style="color: #2c5f0d;">This tool helps you to map PiperPep peptides on your peptide or protein</p>
+    </div>
+    <form action="" [formGroup]="peptide_Form">
+        <div class="flex">
+            <!-- <mat-form-field class="example-full-width">
+            <mat-label>Address 2</mat-label>
+            <textarea matInput></textarea>
+        </mat-form-field> -->
+            <mat-label>Enter sequence below in FASTA format</mat-label>
+            <textarea formControlName="search_pep" id="w3review" name="w3review" rows="5" cols="80"> </textarea>
+            <div style="color: red;"
+                *ngIf="peptide_Form.get('search_pep')?.hasError('required') && peptide_Form.get('search_pep')?.touched">
+                Sequence is required
+            </div>
+            <div style="color: red;" *ngIf="peptide_Form.get('search_pep')?.hasError('pattern')">
+                Spaces are not allowed.
+            </div>
+        </div>
+
+        <div>
+            <h2>Example</h2>
+            <p>SQNIFSGFSTELLSEALGVSSQVAR</p>
+        </div>
+
+        <div>
+            <button type="submit" (click)="getAnotherData()">
+                <span class="circle1"></span>
+                <span class="circle2"></span>
+                <span class="circle3"></span>
+                <span class="circle4"></span>
+                <span class="circle5"></span>
+                <span class="text">Map Peptide</span>
+            </button>
+        </div>
+    </form>
+
+</div>
+
+
+<div *ngIf="showTable" class="w-full">
+    <div class="table-container">
+        <!-- Loader Overlay -->
+        <div *ngIf="isLoading" class="loader-overlay">
+            <div class="textWrapper">
+                <p class="text">Loading...</p>
+                <div class="invertbox"></div>
+            </div>
+        </div>
+        <section class="example-container mat-elevation-z8" tabindex="0">
+            <table mat-table [dataSource]="dataSource" matSort>
+
+                <!-- Position Column -->
+                <!-- <ng-container matColumnDef="position">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
+          <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+        </ng-container> -->
+
+                <!-- Name Column -->
+                <ng-container matColumnDef="accession">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Accession </th>
+                    <td mat-cell *matCellDef="let element"> {{element.accession}} </td>
+                </ng-container>
+
+                <!-- Weight Column -->
+                <ng-container matColumnDef="description">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Description </th>
+                    <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+                </ng-container>
+
+                <!-- Symbol Column -->
+                <ng-container matColumnDef="score">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Score</th>
+                    <td mat-cell *matCellDef="let element"> {{element.score}} </td>
+                </ng-container>
+
+                <!-- <ng-container matColumnDef="falsePositiveRate">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>False Positive Rate</th>
+                <td mat-cell *matCellDef="let element"> {{element.falsePositiveRate}} </td>
+            </ng-container> -->
+
+                <ng-container matColumnDef="peptidelength">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Peptide Length</th>
+                    <td mat-cell *matCellDef="let element">{{element.peptideSeqLength}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="avgMass">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Avg Mass</th>
+                    <td mat-cell *matCellDef="let element"> {{element.avgMass}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="peptideModification">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Peptide Modification</th>
+                    <td mat-cell *matCellDef="let element"> {{element.peptideModification}} </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+                <tr class="mat-row" *matNoDataRow>
+                    <td class="mat-cell text-sm text-center" colspan="8">No Record Found
+                    </td>
+                </tr>
+            </table>
+
+        </section>
+        <mat-paginator class="pagination" [pageSizeOptions]="[ 10, 25, 100]"
+            aria-label="Select page of users"></mat-paginator>
+    </div>
+
+    <div style="display: flex; justify-content: end;">
+        <button type="submit" (click)="cancel()">
+            <span class="circle1"></span>
+            <span class="circle2"></span>
+            <span class="circle3"></span>
+            <span class="circle4"></span>
+            <span class="circle5"></span>
+            <span class="text">Cancel</span>
+        </button>
+    </div>
+
+</div>

@@ -1,0 +1,168 @@
+<div class="home">
+  <div class="grid-cls">
+    <h1>Download</h1>
+    <div class="mt-4">
+      <!-- <form action="" [formGroup]="download_Form" (ngSubmit)="getTableData()">
+        <div class="row" formArrayName="skills">
+          <div class="col-md-11">
+            <div class="input-group" *ngFor="let arr of Download_skills.controls; let i = index" [formGroupName]="i">
+            
+              <select formControlName="category_Pep" (change)="Select_Category($event)" class="form-select"
+                aria-label="Select option">
+                <option disabled value="0">Category</option>
+                <option *ngFor="let item of category" [value]="item">{{item}}</option>
+              </select>
+      
+           
+              <select *ngIf="show_Score" formControlName="symbols_Pep" (change)="Select_Symbol($event)"
+                class="form-select" aria-label="Select option">
+                <option *ngFor="let ite of score" [value]="ite.name">{{ite.name}}</option>
+              </select>
+      
+           
+              <input formControlName="search_Pep" type="text" class="form-control" placeholder="Search..."
+                aria-label="Search" />
+      
+       
+              <button class="btn btn-outline-secondary" type="submit" id="button-addon2">
+                <img class="icons" src="../../../assets/icons/magnifier.png" alt="">
+              </button>
+      
+           
+              <button *ngIf="Download_skills.length > 1 && i > 0" (click)="removeSkills(i)" class="plusRemove" type="button">
+                <img class="icons" src="../../../assets/icons/minus-button.png" alt="">
+              </button>
+      
+            </div>
+          </div>
+          <div class="col-md-1">
+            <button (click)="addSkills()" class="plus" type="button">
+              <img class="icons" src="../../../assets/icons/circle.png" alt="">
+            </button>
+          </div>
+        </div>
+      </form> -->
+
+
+      <form action="" [formGroup]="download_Form" (ngSubmit)="getTableData()">
+        <div class="row" formArrayName="skills">
+          <div *ngFor="let arr of Download_skills.controls; let i = index" [formGroupName]="i" class="row mb-3">
+            <div class="col-md-11">
+              <div class="input-group">
+
+                <select formControlName="category_Pep" (change)="Select_Category($event,i,element)" [ngClass]="{'form-select1': score_result == 'Peptide sequence',
+                  'form-select2': score_result == 'Peptide modification',
+                  'form-select3': score_result == 'Peptide Length',
+                  'form-select4': score_result == 'Peptide Mass'}" #element class="form-select"
+                  aria-label="Select option">
+                  <option disabled value="0">Category</option>
+                  <option *ngFor="let item of category" [value]="item">{{item}}</option>
+                </select>
+
+                <select *ngIf="showScore[i]"
+                  [ngClass]="{'form-select4': symbolName == 'Greater than',
+                'form-select3': symbolName == 'Lesser than','form-select5': symbolName == 'Greater than or equal to','form-select6': symbolName == 'Lesser than or equal to'}"
+                  formControlName="symbols_Pep" (change)="Select_Symbol($event)" class="form-select"
+                  aria-label="Select option">
+                  <option *ngFor="let ite of score" [value]="ite.name">{{ite.name}}</option>
+                </select>
+
+                <input formControlName="search_Pep" type="text" class="form-control" placeholder="Search..."
+                  aria-label="Search" />
+
+                <button class="btn btn-outline-secondary" type="submit" id="button-addon2">
+                  <img class="icons" src="../../../assets/icons/magnifier.png" alt="">
+                </button>
+              </div>
+            </div>
+
+            <div style="display: flex; align-items: flex-start;" class="col-md-1">
+              <button style="margin-right: 5px; background-color: rgb(242, 190, 190);"
+                *ngIf="Download_skills.length > 1 && i > 0" (click)="removeSkills(i)" class="plus" type="button">
+                <img class="icons" src="../../../assets/icons/minus-button.png" alt="">
+              </button>
+
+              <button *ngIf="i === Download_skills.length - 1" (click)="addSkills()" class="plus" type="button">
+                <img class="icons" src="../../../assets/icons/circle.png" alt="">
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+
+    </div>
+
+  </div>
+</div>
+
+
+<div class="w-full" style="">
+
+  <div style="display: flex; justify-content: end; padding-bottom: 10px;">
+    <button [disabled]="this.dataSource.data.length == 0" (click)="downloadCsv()" type="button"
+      class="btn1 btn-success">
+      <img class="icons" src="../../../assets/icons/downloads.png" alt="">
+      Download CSV</button>
+  </div>
+
+  <div class="table-container">
+    <!-- Loader Overlay -->
+    <div *ngIf="isLoading" class="loader-overlay">
+      <div class="textWrapper">
+        <p class="text">Loading...</p>
+        <div class="invertbox"></div>
+      </div>
+    </div>
+
+    <section class="example-container mat-elevation-z8" tabindex="0">
+      <table mat-table [dataSource]="dataSource" matSort>
+        <ng-container matColumnDef="accession">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Accession </th>
+          <td mat-cell *matCellDef="let element"> {{element.accession}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="description">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Description </th>
+          <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="peptideSeq">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Peptide sequence </th>
+          <td mat-cell *matCellDef="let element"> {{element.peptideSeq}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="peptideSeqLength">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Peptide Length </th>
+          <td mat-cell *matCellDef="let element"> {{element.peptideSeqLength}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="score">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> score</th>
+          <td mat-cell *matCellDef="let element"> {{element.score}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="avgMass">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> AvgMass</th>
+          <td mat-cell *matCellDef="let element"> {{element.avgMass}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="peptideModification">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Peptide Modification</th>
+          <td mat-cell style="text-align: center;" *matCellDef="let element"> {{element.peptideModification}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell text-sm text-center" colspan="8">No Record Found
+          </td>
+        </tr>
+      </table>
+
+    </section>
+    <mat-paginator class="pagination" [pageSizeOptions]="[ 10, 25, 100]"
+      aria-label="Select page of users"></mat-paginator>
+  </div>
+
+</div>

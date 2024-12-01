@@ -1,0 +1,50 @@
+<div>
+    <ul class="breadcrumb">
+        <li><a href="/home">Home</a></li>
+        <li><a href="/tools">Tools</a></li>
+        <li>PepCal Tool</li>
+    </ul>
+</div>
+<div class="home">
+    <div class="grid-cls">
+        <h1 style="color: #fff;">Physiochemical Property Calculator
+        </h1>
+        <p style="color: #fff;">This tool helps you to Calculate Physiochemical property of your peptide.</p>
+        <!-- <form action="" [formGroup]="peptform">
+
+            <div class="mt-4">
+                <div class="input-group">
+                    <select formControlName="nTerminus" (change)="Select_Category($event)" class="form-select"
+                        aria-label="Select option">
+                        <option disabled value="0">N-Terminus</option>
+                        <option *ngFor="let item of nTerminus; let i = index" [value]="item">{{item}}</option>
+                    </select>
+
+                    <input formControlName="sequence" type="text" class="form-control" placeholder="Search..."
+                        aria-label="Search" />
+
+                    <select formControlName="cTerminus" (change)="Select_Category($event)" class="form-select"
+                        aria-label="Select option">
+                        <option disabled value="0">C-Terminus</option>
+                        <option *ngFor="let item of cTerminus; let i = index" [value]="item">{{item}}</option>
+                    </select>
+
+                    <select formControlName="aaCodeUsed" (change)="Select_Category($event)" class="form-select"
+                        aria-label="Select option">
+                        <option disabled value="0">AA Code used</option>
+                        <option *ngFor="let item of aaCode; let i = index" [value]="item">{{item}}</option>
+                    </select>
+                    <button (click)="gotopeptide()" class="btn btn-outline-secondary" type="button" id="button-addon2">
+                        calculate
+                    </button>
+
+                </div>
+            </div>
+
+        </form> -->
+
+
+        <iframe src="http://pepcalc.com/peptide-sequence-input-popup.php?inputFields=advanced"
+            style="height:50px;width:100%;border:none;scrolling=no;"></iframe>
+    </div>
+</div>
