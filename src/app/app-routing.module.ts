@@ -13,7 +13,7 @@ import { HomeComponent } from 'src/dashboard/home/home/home.component';
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent, },
-  { path: 'login', component: LoginComponent }, //canActivate:[AuthGuard]
+  { path: 'login', component: LoginComponent },
   { path: 'Sign-up', component: SignUpComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'team', component: TeamComponent },
