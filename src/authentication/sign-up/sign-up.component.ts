@@ -5,14 +5,14 @@ import { Router } from '@angular/router';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { MatIconModule } from '@angular/material/icon';
 import { SignInService } from 'src/services/authentication/sign-in.service';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
   standalone: true,
-  imports: [CommonModule, FormsModule, MatIconModule,MatFormFieldModule,MatInputModule, ReactiveFormsModule, ToastrModule],
+  imports: [CommonModule, FormsModule, MatIconModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule, ToastrModule],
   providers: [DatePipe],
   styleUrls: ['./sign-up.component.scss']
 })
@@ -56,21 +56,23 @@ export class SignUpComponent implements OnInit {
   text = '';
   confirmPassword(x: any) {
     this.text = x.key;
-    
+
   }
   passwordVisible = false;
   confirmPasswordVisible = false;
-  
+
   togglePasswordVisibility() {
     this.passwordVisible = !this.passwordVisible;
   }
-  
+
   toggleConfirmPasswordVisibility() {
     this.confirmPasswordVisible = !this.confirmPasswordVisible;
   }
-  
+
   save() {
-    if(this.signupForm.get('passwordHash')?.value != this.signupForm.get('confirmPassword')?.value){
+    const emailId = this.signupForm.get('email')?.value;
+    this.signupForm.get('username')?.setValue(emailId)
+    if (this.signupForm.get('passwordHash')?.value != this.signupForm.get('confirmPassword')?.value) {
       this.toast.warning('Check password')
     }
     if (this.signupForm.invalid) {

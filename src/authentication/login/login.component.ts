@@ -52,7 +52,6 @@ export class LoginComponent implements OnInit {
           this.signIn.reset();
           localStorage.setItem('userId', result.userId)
           localStorage.setItem('UserName', result.firstName + ' ' + result.lastName)
-          // this.router.navigate(['home'])
           this.router.navigate(['/home']).then(() => {
             window.history.replaceState({}, '', '/home');
           });

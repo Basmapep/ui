@@ -13,6 +13,7 @@ import { PiperpepMapComponent } from './piperpep-map/piperpep-map.component';
 import {MatInputModule} from '@angular/material/input';
 import { PepcalToolComponent } from './pepcal-tool/pepcal-tool.component';
 import { SelectedSequenceComponent } from './selected-sequence/selected-sequence.component';
+import { BlastBasmaComponent } from './blast-basma/blast-basma.component';
 
 
 
@@ -23,6 +24,7 @@ import { SelectedSequenceComponent } from './selected-sequence/selected-sequence
         PiperpepMapComponent,
         PepcalToolComponent,
         SelectedSequenceComponent,
+        BlastBasmaComponent,
     ],
     imports: [
         CommonModule,

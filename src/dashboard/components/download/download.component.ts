@@ -18,7 +18,7 @@ export class DownloadComponent implements OnInit {
   category: any = [
     'Accession', 'Score', 'Peptide sequence', 'Peptide modification', 'Peptide Length', 'Peptide Mass'
   ];
-  isLoading: boolean = true;
+  isLoading: boolean = false;
 
   @ViewChild('element') elements!: QueryList<ElementRef>;
 
@@ -31,7 +31,7 @@ export class DownloadComponent implements OnInit {
   ]
 
   title: any = '';
-  displayedColumns = ['accession', 'description', 'peptideSeq', 'peptideSeqLength', 'score', 'avgMass', 'peptideModification'];
+  displayedColumns = ['position', 'accession', 'description', 'peptideSeq', 'peptideSeqLength', 'score', 'variety', 'avgMass', 'peptideModification'];
   download_Form!: FormGroup;
   public score_result: any = '';
   showScore: { [key: number]: boolean } = {};
@@ -76,6 +76,15 @@ export class DownloadComponent implements OnInit {
       this.Download_skills.removeAt(id)
       delete this.showScore[id];
     }
+  }
+
+  currentPage = 0; // Default page index
+  pageSize = 10; // Page size (update as per your setup)
+  
+  // Update the current page when the page changes
+  onPageChange(event: any) {
+    this.currentPage = event.pageIndex;
+    this.pageSize = event.pageSize;
   }
 
 

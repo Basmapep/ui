@@ -1,0 +1,80 @@
+
+<!-- <div class="table-container"> -->
+    <div *ngIf="isLoading" class="loader-overlay">
+        <div class="textWrapper">
+            <p class="text">Loading...</p>
+            <div class="invertbox"></div>
+        </div>
+    </div>
+<!-- </div> -->
+<div class="max">
+    <div class="text1">
+        <div>BasmaPep Blast Tool</div>
+    </div>
+</div>
+<div class="max-width">
+    <p style="color: #073B3A; font-size: larger; ">Blast your target sequence against BasmaPepDB.</p>
+
+    <form action="" [formGroup]="peptide_Form">
+        <div class="flex">
+            <!-- <mat-form-field class="example-full-width">
+            <mat-label>Address 2</mat-label>
+            <textarea matInput></textarea>
+        </mat-form-field> -->
+            <mat-label>Enter Your Query sequence below</mat-label>
+            <textarea formControlName="blastSequence" id="w3review" name="w3review" rows="5" cols="80"> </textarea>
+            <div style="color: red;"
+                *ngIf="peptide_Form.get('blastSequence')?.hasError('required') && peptide_Form.get('blastSequence')?.touched">
+                Sequence is required
+            </div>
+            <div style="color: red;" *ngIf="peptide_Form.get('blastSequence')?.hasError('pattern')">
+                Spaces are not allowed.
+            </div>
+        </div>
+
+        <div>
+            <h2>Example</h2>
+            <p>SQNIFSGFSTELLSEALGVSSQVAR</p>
+        </div>
+
+        <div>
+            <button type="submit" (click)="getAnotherData()">
+                <span class="circle1"></span>
+                <span class="circle2"></span>
+                <span class="circle3"></span>
+                <span class="circle4"></span>
+                <span class="circle5"></span>
+                <span class="text">Blast</span>
+            </button>
+        </div>
+    </form>
+</div>
+
+<div style="max-width: 900px; margin: 0 auto; padding-top: 20px; padding-bottom: 50%;">
+    <pre>{{blastData}}</pre>
+    
+</div>
+
+
+<!-- <div *ngIf="showTable" class="w-full">
+    <div class="table-container">
+        <div *ngIf="isLoading" class="loader-overlay">
+            <div class="textWrapper">
+                <p class="text">Loading...</p>
+                <div class="invertbox"></div>
+            </div>
+        </div>
+    </div>
+
+    <div style="display: flex; justify-content: end;">
+        <button type="submit" (click)="cancel()">
+            <span class="circle1"></span>
+            <span class="circle2"></span>
+            <span class="circle3"></span>
+            <span class="circle4"></span>
+            <span class="circle5"></span>
+            <span class="text">Cancel</span>
+        </button>
+    </div>
+
+</div> -->

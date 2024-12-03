@@ -1,7 +1,7 @@
 .home {
     width: 100%;
     display: flex;
-    background-color: #58a12b;
+    background-color: #93DC5C;
     align-items: center;
     justify-content: center;
     height: 50vh;
@@ -9,7 +9,7 @@
 }
 
 .grid-cls {
-    background-color: #58a12b;
+    background-color: #93DC5C;
     padding: 20px;
     border-radius: 15px;
 }
@@ -38,9 +38,13 @@ h1 {
     text-align: center;
 }
 
+article{
+    color: #073B3A;
+}
+
 .anih1 {
     color: #dbd56e;
-    background: -webkit-linear-gradient(25deg, #eee, #eae6e6);
+    background: -webkit-linear-gradient(25deg, #073B3A, #073B3A);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-size: 3rem;
@@ -115,7 +119,7 @@ h1 {
 }
 
 .cardnewblast {
-    background: url("../../../assets/Images/blast.svg");
+    background: url("../../../assets/Images/tools/R.png");
     background-size: cover;
     background-color: rgb(86, 81, 81);
     opacity: .8;
@@ -124,8 +128,10 @@ h1 {
 }
 
 .cardnewlustration {
-    background: url("../../../assets/Images/align_illustration.img.e323d8.svg");
-    background-size: cover;
+    background: url("../../../assets/Images/tools/graphic_API_emblem.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
     background-color: rgb(86, 81, 81);
     opacity: .8;
     -webkit-box-shadow: 0 0 5px #000;
@@ -142,9 +148,11 @@ h1 {
 }
 
 .cardnewpep {
-    background: url("../../../assets/Images/camp2.svg"), #6DB3F2;
-    background-size: cover;
+    background: url("../../../assets/Images/tools/camp.jpg"), #6DB3F2;
+    background-size: contain;
+    background-repeat: no-repeat;
     background-color: rgb(86, 81, 81);
+    background-position: center;
     opacity: .8;
     -webkit-box-shadow: 0 0 5px #000;
     box-shadow: 0 0 5px #000;

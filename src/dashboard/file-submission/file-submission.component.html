@@ -22,12 +22,34 @@
 
 </div> -->
 <!-- New Upload -->
+<div class="userDetails">
+    <div class="row">
+        <div class="col-4">
+           UserName: <span class="details">{{userName}}</span> 
+        </div>
+
+        <div class="col-4">
+           Email: <span class="details">{{emailId}}</span>
+        </div>
+
+        <div class="col-4">
+           Phone Number: <span class="details">{{phoneNo}}</span> 
+        </div>
+    </div>
+</div>
 <div *ngIf="isLoading" class="loader-overlay">
     <div class="textWrapper">
         <p class="text">Loading...</p>
         <div class="invertbox"></div>
     </div>
 </div>
+
+<form [formGroup]="fileForm">
+    <div style="max-width: 1320px; margin: 20px auto;">
+        <p><label for="w3review">Methodology: </label></p>
+        <textarea formControlName="message" id="w3review" name="w3review" rows="4" cols="60"> </textarea>
+    </div>
+</form>
 <div class="container">
     <h3>File Upload</h3>
 

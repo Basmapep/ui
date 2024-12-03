@@ -22,8 +22,12 @@ export class ToolsComponent implements OnInit {
     this.router.navigate(['/components/piperMap'])
   }
 
-  pepCalTool(){
+  pepCalTool() {
     this.router.navigate(['/components/pepCal'])
+  }
+
+  goToBasmaLast() {
+    this.router.navigate(['/components/basmaBlast'])
   }
 
 }

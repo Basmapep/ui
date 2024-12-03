@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 import { SubmissionService } from 'src/services/submission/submission.service';
 import { ToastrService } from 'ngx-toastr';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 interface UploadedFile {
   [x: string]: any;
@@ -15,19 +16,28 @@ interface UploadedFile {
 @Component({
   selector: 'app-file-submission',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule],
   templateUrl: './file-submission.component.html',
   styleUrls: ['./file-submission.component.scss']
 })
 export class FileSubmissionComponent implements OnInit {
   isLoading: boolean = false;
+  fileForm!: FormGroup;
   // files: File[] = [];
   ArrayFile: any = [];
+  userName: string = 'Samsudhan';
+  emailId: string = 'samsudhan23@gmail.com';
+  phoneNo: number = 9865927380;
   constructor(private _snackBar: MatSnackBar,
     public dialog: MatDialog,
     private toast: ToastrService,
     private cdr: ChangeDetectorRef,
-    private submission: SubmissionService) { }
+    private fb: FormBuilder,
+    private submission: SubmissionService) {
+    this.fileForm = this.fb.group({
+      message: ['']
+    })
+  }
   ngOnInit(): void {
   }
 
@@ -113,7 +123,7 @@ export class FileSubmissionComponent implements OnInit {
           this.files1.push({ file, base64: base64String });
           this.ArrayFile = this.files1.map(ite => {
             return {
-              userId: 7,
+              userId: localStorage.getItem('userId'),
               files: ite.base64,
               filenames: ite.file.name
             };
@@ -131,7 +141,8 @@ export class FileSubmissionComponent implements OnInit {
   uploadFiles(): void {
     this.isLoading = true;
     const mailRequest = {
-      "fileData": this.ArrayFile
+      "fileData": this.ArrayFile,
+      message: `${'Hi Admin' + ' ' + this.fileForm.get('message')?.value}`
     }
 
     this.submission.uploadSubmission(mailRequest).subscribe((result: any) => {

@@ -22,15 +22,16 @@
 .home {
     width: 100%;
     display: flex;
-    background-color: #58a12b;
+    background-color: #93DC5C;
     align-items: center;
+    text-align: center;
     justify-content: center;
-    height: 50vh;
+    // height: 50vh;
     margin-bottom: 2em;
 }
 
 .grid-cls {
-    background-color: #58a12b;
+    background-color: #93DC5C;
     padding: 20px;
     border-radius: 15px;
     width: min(95vw, 67rem);

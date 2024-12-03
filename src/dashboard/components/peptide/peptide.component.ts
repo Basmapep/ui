@@ -20,7 +20,7 @@ export class PeptideComponent implements OnInit {
   ];
   title: any = '';
   public category_Value: any;
-  displayedColumns = ['accession', 'description', 'score', 'peptidelength', 'avgMass', 'peptideModification', 'action'];
+  displayedColumns = ['accession', 'description', 'score', 'variety', 'peptidelength', 'avgMass', 'peptideModification', 'action'];
   dataSource: MatTableDataSource<any> = new MatTableDataSource();
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;

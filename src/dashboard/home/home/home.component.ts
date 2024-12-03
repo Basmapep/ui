@@ -44,4 +44,17 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  goToBasmaLast() {
+    this.route.navigate(['/components/basmaBlast'])
+  }
+
+  pepCalTool() {
+    this.route.navigate(['/components/pepCal'])
+  }
+  dynamicLink: string = '';
+
+  navigateTo(link: string) {
+    window.location.href = link;
+  }
+
 }

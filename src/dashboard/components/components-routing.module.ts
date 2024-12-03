@@ -6,6 +6,7 @@ import { ToolsComponent } from "./tools/tools.component";
 import { PiperpepMapComponent } from "./piperpep-map/piperpep-map.component";
 import { PepcalToolComponent } from "./pepcal-tool/pepcal-tool.component";
 import { SelectedSequenceComponent } from "./selected-sequence/selected-sequence.component";
+import { BlastBasmaComponent } from "./blast-basma/blast-basma.component";
 
 
 const Comproutes: Routes = [
@@ -28,6 +29,9 @@ const Comproutes: Routes = [
     },
     {
         path: 'select-Sequence', component: SelectedSequenceComponent
+    },
+    {
+        path: 'basmaBlast', component: BlastBasmaComponent
     }
 
 ]

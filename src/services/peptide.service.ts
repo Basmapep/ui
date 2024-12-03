@@ -26,4 +26,13 @@ export class PeptideService {
     return this.sequenceData;
   }
 
+  getBlastData(sequence: string): Observable<any> {
+    const params = new HttpParams().set('blastSequence', sequence);
+    return this.http.get(environment.serverUrl + ApiUrls.version + ApiUrls.blast, { 
+      params, 
+      responseType: 'text' // Specify response type as text
+    });
+  }
+  
+
 }

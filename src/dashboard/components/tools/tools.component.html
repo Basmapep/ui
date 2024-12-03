@@ -1,6 +1,6 @@
 <div class="max">
 
-    <div class="row border">
+    <!-- <div class="row border">
         <div class="col-12">
             <mat-accordion>
 
@@ -8,40 +8,129 @@
                     <mat-expansion-panel-header>
                         <mat-panel-title> Blast Tool</mat-panel-title>
                         <mat-panel-description>
-                            Blast your target sequence against PiperDB or NCBI nt database.
+                            Blast your target sequence against BasmaPepDB or NCBI nt database.
                         </mat-panel-description>
                     </mat-expansion-panel-header>
                     <div class="basttool">
-                        <span class="hov1">Blast PiperDB</span>
+                        <span class="hov1">Blast BasmaPepDB</span>
                     </div>
                     <div class="basttool1">
-                        <!-- <span href="https://www.w3schools.com" class="hov">NCBI BLAST</span> -->
-                        <a style="color: white;" target="_blank" href="https://blast.ncbi.nlm.nih.gov/Blast.cgi?PROGRAM=blastp&PAGE_TYPE=BlastSearch&LINK_LOC=blasthome"> NCBI BLAST</a>
+                        <a style="color: white;" target="_blank"
+                            href="https://blast.ncbi.nlm.nih.gov/Blast.cgi?PROGRAM=blastp&PAGE_TYPE=BlastSearch&LINK_LOC=blasthome">
+                            NCBI BLAST</a>
                     </div>
                 </mat-expansion-panel>
             </mat-accordion>
 
         </div>
-        <!-- <div class="col-6">
-            Blast your target sequence against PiperDB or NCBI nt database.
-        </div> -->
-    </div>
+       
+    </div> -->
 
-    <div class="row border">
+    <!-- <div class="row border">
         <div (click)="goToMapTool()" class="col-2">
             MAP Tool
         </div>
         <div class="col-10">
-            Map your target sequence against Piperpep or NCBI nt database.
+            Map your target sequence against BasmaPepDB or NCBI nt database.
         </div>
     </div>
 
     <div class="row border">
         <div class="col-2" (click)="pepCalTool()">
-            PepCal Tool
+            PepCalc Tool
         </div>
         <div class="col-10">
-           Analyze your Peptide properties target sequence against Piperpep or NCBI nt database.
+            Analyze your Peptide properties target sequence against BasmaPepDB or NCBI nt database.
         </div>
+    </div> -->
+
+    <div style="text-align: center; padding: 20px; font-size: 23px; font-weight: 500;">
+        <div>Tools</div>
+
     </div>
+
+</div>
+
+<div class="max-width">
+    <div style="text-align: center;">
+        <p>Several bioinformatics tools are provided either as a web-service or standalone software to support your
+            specific needs.
+        </p>
+
+    </div>
+
+    <div class="row" style=" margin-top: 20px;">
+        <div class="col-2">
+            <img class="toolImg" src="../../../assets/Images/tools/R.png" alt="">
+        </div>
+        <div class="col-8">
+            <h1 style="cursor: pointer;">Blast Tool</h1>
+            <p>Blast your target sequence against BasmaPepDB or NCBI database.</p>
+            <div style="">
+                <span (click)="goToBasmaLast()" class="bastTool">Blast BasmaPepDB</span>
+                <span class="bastTool">
+                    <a style="color: #073B3A; text-decoration: none;" target="_blank"
+                        href="https://blast.ncbi.nlm.nih.gov/Blast.cgi?PROGRAM=blastp&PAGE_TYPE=BlastSearch&LINK_LOC=blasthome">
+                        NCBI BLAST</a>
+                </span>
+            </div>
+
+        </div>
+        <hr>
+    </div>
+
+    <div class="row" style=" margin-top: 20px;">
+        <div class="col-2">
+            <img class="toolImg" src="../../../assets/Images/tools/search.png" alt="">
+        </div>
+        <div class="col-8">
+            <h1 (click)="goToMapTool()" class="underline">Map Tool</h1>
+            <p>Map your target sequence against BasmaPepDB or NCBI nt database.</p>
+        </div>
+        <hr>
+    </div>
+
+    <div class="row" style=" margin-top: 20px;">
+        <div class="col-2">
+            <img class="toolImg" src="../../../assets/Images/tools/graphic_API_emblem.png" alt="">
+        </div>
+        <div class="col-8">
+            <h1 (click)="pepCalTool()" class="underline">PepCalc Tool</h1>
+            <p>Analyze your Peptide properties target sequence against BasmaPepDB.</p>
+        </div>
+        <hr>
+    </div>
+
+    <div class="row" style=" margin-top: 20px;">
+        <div class="col-2" style="padding: 18px;">
+            <div>APD3</div>
+        </div>
+        <div class="col-8">
+            <h1 class="underline">
+                <a style="color: #073B3A; text-decoration: none;" target="_blank"
+                    href="https://aps.unmc.edu/prediction">
+                    Antimicrobial Peptide Calculator and Predictor</a>
+            </h1>
+            <p>Analyze your Peptide properties against Antimicrobial PeptideDatabase (AMP).</p>
+        </div>
+        <hr>
+    </div>
+
+    <div class="row" style=" margin-top: 20px;">
+        <div class="col-2">
+            <div>
+                <img class="toolImg" src="../../../assets/Images/tools/camp.jpg" alt="">
+            </div>
+        </div>
+        <div class="col-8">
+            <h1 class="underline">
+                <a style="color: #073B3A; text-decoration: none;" target="_blank"
+                    href="https://camp4.bicnirrh.res.in/predict/">
+                    CAMPR4: Predict AMP sequences</a>
+            </h1>
+            <p>Predict your Peptide properties using CAMPR4 Database with RF,SVM and ANN.</p>
+        </div>
+        <hr>
+    </div>
+
 </div>

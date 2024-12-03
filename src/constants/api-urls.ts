@@ -4,4 +4,5 @@ export class ApiUrls {
     static readonly submission = 'UserDetails/mail';
     static readonly signin = 'UserDetails/createNewUser'
     static readonly login = 'UserDetails/login'
+    static readonly blast = 'peptide/blast'
 }

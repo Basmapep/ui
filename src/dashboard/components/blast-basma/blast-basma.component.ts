@@ -4,25 +4,22 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { PeptideService } from 'src/services/peptide.service';
-
 @Component({
-  selector: 'app-piperpep-map',
-  templateUrl: './piperpep-map.component.html',
-  styleUrls: ['./piperpep-map.component.scss']
+  selector: 'app-blast-basma',
+  templateUrl: './blast-basma.component.html',
+  styleUrls: ['./blast-basma.component.scss']
 })
-export class PiperpepMapComponent implements OnInit {
+export class BlastBasmaComponent implements OnInit {
 
-  showTable: boolean = false;
 
   displayedColumns = ['accession', 'peptideSequence', 'score', 'peptidelength', 'avgMass', 'peptideModification'];
   dataSource: MatTableDataSource<any> = new MatTableDataSource();
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   isLoading: boolean = false;
-
+  blastData: any;
   peptide_Form = this.fb.group({
-    categ_pep: ['Peptide sequence', Validators.required],
-    search_pep: [
+    blastSequence: [
       '',
       [Validators.required, Validators.pattern(/^\S*$/)] // No spaces allowed
     ]
@@ -45,28 +42,23 @@ export class PiperpepMapComponent implements OnInit {
   getAnotherData() {
     if (this.peptide_Form.valid) {
       this.isLoading = true;
-      if (this.peptide_Form.value.categ_pep != null && this.peptide_Form.value.search_pep != null) {
-        this.peptide.getPeptide(this.peptide_Form.value.categ_pep, this.peptide_Form.value.search_pep).subscribe((data: any[]) => {
-          this.showTable = true;
-          if (data.length > 0) {
-            this.dataSource.data = data;
-            console.log('this.dataSource.data: ', this.dataSource.data);
+      if (this.peptide_Form.value.blastSequence != null) {
+        this.peptide.getBlastData(this.peptide_Form.value.blastSequence).subscribe(
+          (data: string) => {
+            console.log('Raw response: ', data);
+            this.blastData = data;
+            this.isLoading = false;
             this.peptide_Form.reset();
-            setTimeout(() => {
-              this.isLoading = false;
-            }, 500);
-          } else {
-            this.dataSource.data = [];
-            setTimeout(() => {
-              this.isLoading = false;
-            }, 500);
+          },
+          (error) => {
+            console.error('Error fetching BLAST data:', error);
           }
-        })
+        );
       }
     }
   }
 
   cancel() {
-    this.showTable = false;
   }
+
 }
