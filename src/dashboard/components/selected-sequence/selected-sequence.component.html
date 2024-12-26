@@ -108,17 +108,17 @@
                 <tr>
                     <th scope="col" style="white-space: nowrap;">S.No</th>
                     <th scope="col" style="white-space: nowrap;">Accession</th>
-                    <th scope="col" style="white-space: nowrap;">Description</th>
-                    <th scope="col" style="white-space: nowrap;">Score</th>
                     <th scope="col" style="white-space: nowrap;">Variety</th>
+                    <th scope="col" style="white-space: nowrap;">Entry</th>
+                    <th scope="col" style="white-space: nowrap;">Description</th>
+                    <th scope="col" style="white-space: nowrap;">Peptide Sequence</th>
                     <th scope="col" style="white-space: nowrap;">Peptide Length</th>
                     <th scope="col" style="white-space: nowrap;">Avg Mass</th>
+                    <th scope="col" style="white-space: nowrap;"> Score </th>
                     <th scope="col" style="white-space: nowrap;">Peptide Modification</th>
-                    <th scope="col" style="white-space: nowrap;">Entry</th>
+                    <th scope="col" style="white-space: nowrap;">Peptide Sequence Start</th>
                     <th scope="col" style="white-space: nowrap;">Peptide Matched Products</th>
                     <th scope="col" style="white-space: nowrap;">PeptideMhp</th>
-                    <th scope="col" style="white-space: nowrap;">Peptide Sequence</th>
-                    <th scope="col" style="white-space: nowrap;">Peptide Sequence Start</th>
                     <th scope="col" style="white-space: nowrap;">Pre Cursor Charge</th>
                     <th scope="col" style="white-space: nowrap;">Pre Cursor Intensity</th>
                     <th scope="col" style="white-space: nowrap;">Pre Cursor Mz</th>
@@ -130,17 +130,17 @@
                 <tr *ngFor="let item of tabelData; let i = index">
                     <td>{{ i + 1 }}</td>
                     <td>{{ item.accession }}</td>
-                    <td>{{ item.description }}</td>
-                    <td>{{ item.score }}</td>
                     <td>{{ item.variety }}</td>
+                    <td>{{ item.entry }}</td>
+                    <td>{{ item.description }}</td>
+                    <td>{{ item.peptideSeq  }}</td>
                     <td>{{ item.peptideSeqLength }}</td>
                     <td>{{ item.avgMass }}</td>
+                    <td>{{ item.score }}</td>
                     <td>{{ item.peptideModification }}</td>
-                    <td>{{ item.entry }}</td>
+                    <td>{{ item.peptideSeqStart }}</td>
                     <td>{{ item.peptideMatchedProducts }}</td>
                     <td>{{ item.peptideMhp }}</td>
-                    <td>{{ item.peptideSeq }}</td>
-                    <td>{{ item.peptideSeqStart }}</td>
                     <td>{{ item.precursorCharge }}</td>
                     <td>{{ item.precursorIntensity }}</td>
                     <td>{{ item.precursorMz }}</td>

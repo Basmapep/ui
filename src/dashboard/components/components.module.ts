@@ -1,4 +1,4 @@
-import { NgModule } from "@angular/core";
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 import { ComponentsComponent } from "./components.component";
 import { PeptideComponent } from "./peptide/peptide.component";
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
@@ -14,6 +14,9 @@ import {MatInputModule} from '@angular/material/input';
 import { PepcalToolComponent } from './pepcal-tool/pepcal-tool.component';
 import { SelectedSequenceComponent } from './selected-sequence/selected-sequence.component';
 import { BlastBasmaComponent } from './blast-basma/blast-basma.component';
+import { LoadingComponent } from "../loading/loading.component";
+import { UserHelpComponent } from "./user-help/user-help.component";
+import { NgApexchartsModule } from "ng-apexcharts";
 
 
 
@@ -25,6 +28,8 @@ import { BlastBasmaComponent } from './blast-basma/blast-basma.component';
         PepcalToolComponent,
         SelectedSequenceComponent,
         BlastBasmaComponent,
+        LoadingComponent,
+        UserHelpComponent
     ],
     imports: [
         CommonModule,
@@ -36,9 +41,11 @@ import { BlastBasmaComponent } from './blast-basma/blast-basma.component';
         MatPaginatorModule,
         MatSelectModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        NgApexchartsModule
     ],
     providers: [],
+    schemas:[NO_ERRORS_SCHEMA,CUSTOM_ELEMENTS_SCHEMA],
     bootstrap: [ComponentsComponent]
 })
 

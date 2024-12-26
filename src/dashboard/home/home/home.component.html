@@ -1,7 +1,7 @@
 <!-- <app-navbar></app-navbar> -->
 
 
-<div class="home">
+<!-- <div class="home">
     <div class="grid-cls">
         <div class="containers">
             <div>
@@ -40,9 +40,17 @@
         </div>
     </div>
 
+</div> -->
+<div class="parallax">
+    <h1 class="scroll-text" [ngClass]="{
+        'initial': isInitial,
+        'left-to-center': !isInitial && scrollDirection === 'up',
+        'right-to-left': scrollDirection === 'down'
+      }">
+        Welcome to BasmaPep Database <br> <img style="border-radius: 20px; width: 60%;" src="../../../assets/Images/logo/oie_KRi9rjRE9O1V.jpg" alt="">
+    </h1>
 </div>
-
-<article>
+<article style="padding-bottom: 100px;">
     <h1 style="text-align: center;">Peptide Database</h1>
     <p class="">The Rice Peptide Search Database is a groundbreaking resource developed by the Rice Institute in
         Thanjavur, in
@@ -143,10 +151,48 @@
 
 </div> -->
 
+
+
+<section style="max-width: 110rem; margin: 0 auto; padding-bottom: 100px;">
+    <div class="gridchart">
+        <div class=" chartCard">
+            <div id="chart">
+                <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart" [labels]="chartOptions.labels"
+                    [responsive]="chartOptions.responsive"></apx-chart>
+            </div>
+    
+        </div>
+
+        <div class=" chartCard">
+            <div id="chart">
+                <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart" [labels]="chartOptions.labels"
+                    [responsive]="chartOptions.responsive"></apx-chart>
+            </div>
+    
+        </div>
+    </div>
+   
+</section>
+
+<section style="max-width: 110rem; margin: 0 auto; padding-bottom: 100px;">
+    <div style="width: 100%;">
+        <div class="chartCard">
+            <apx-chart
+              [series]="chartOptions1.series"
+              [chart]="chartOptions1.chart"
+              [dataLabels]="chartOptions1.dataLabels"
+              [plotOptions]="chartOptions1.plotOptions"
+              [xaxis]="chartOptions1.xaxis"
+            ></apx-chart>
+          </div>
+          
+    </div>
+</section>
+
+
 <div class="w-full" style="text-align: center;">
     <h1 style="padding: 30px;">
-        <svg xmlns="http://www.w3.org/2000/svg" style="width: 40px;"
-            viewBox="0 0 512 512">
+        <svg xmlns="http://www.w3.org/2000/svg" style="width: 40px;" viewBox="0 0 512 512">
             <path
                 d="M176 88l0 40 160 0 0-40c0-4.4-3.6-8-8-8L184 80c-4.4 0-8 3.6-8 8zm-48 40l0-40c0-30.9 25.1-56 56-56l144 0c30.9 0 56 25.1 56 56l0 40 28.1 0c12.7 0 24.9 5.1 33.9 14.1l51.9 51.9c9 9 14.1 21.2 14.1 33.9l0 92.1-128 0 0-32c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 32-128 0 0-32c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 32L0 320l0-92.1c0-12.7 5.1-24.9 14.1-33.9l51.9-51.9c9-9 21.2-14.1 33.9-14.1l28.1 0zM0 416l0-64 128 0c0 17.7 14.3 32 32 32s32-14.3 32-32l128 0c0 17.7 14.3 32 32 32s32-14.3 32-32l128 0 0 64c0 35.3-28.7 64-64 64L64 480c-35.3 0-64-28.7-64-64z" />
         </svg>
@@ -206,7 +252,8 @@
                         <hr>
                     </div>
                     <div class="items price">
-                        <small class="old">Analyze your Peptide properties against Antimicrobial PeptideDatabase (AMP)</small>
+                        <small class="old">Analyze your Peptide properties against Antimicrobial PeptideDatabase
+                            (AMP)</small>
                     </div>
 
                 </div>
@@ -226,7 +273,8 @@
                         <hr>
                     </div>
                     <div class="items price">
-                        <small class="old">Predict your Peptide properties using CAMPR4 Database with RF,SVM and ANN.</small>
+                        <small class="old">Predict your Peptide properties using CAMPR4 Database with RF,SVM and
+                            ANN.</small>
                     </div>
 
                 </div>

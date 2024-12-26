@@ -1,15 +1,91 @@
 .home {
     width: 100%;
     display: flex;
-    background-color: #93DC5C;
+    // background: url('../../../assets/Images/home-rice.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
     align-items: center;
     justify-content: center;
-    height: 50vh;
+    height: 70%;
     margin-bottom: 2em;
+    position: relative;
+    /* Required for positioning the pseudo-element */
+    z-index: 1;
+    /* Ensures the content appears above the overlay */
 }
 
+.parallax {
+    width: 100%;
+    display: flex;
+    background-image: url("../../../assets/Images/home-rice.jpg");
+    min-height: 70%;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-bottom: 2em;
+    position: relative;
+    z-index: 1;
+    justify-content: center;
+    align-items: center;
+}
+
+.parallax::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    /* Adjust the opacity (0.5) as needed */
+    z-index: -1;
+    /* Places the overlay below the .home content */
+}
+
+.scroll-text {
+    color: white;
+    font-size: 2.5em;
+    font-weight: bold;
+    text-align: center;
+    position: relative;
+    opacity: 0;
+    transform: translateX(-100%);
+    line-height: 90px;
+    transition: transform 1s ease, opacity 1s ease;
+}
+
+.scroll-text.initial {
+    animation: slideIn 2s ease-in-out forwards;
+}
+
+/* Keyframe animation for the initial slide-in */
+@keyframes slideIn {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Scroll-based animations */
+.scroll-text.left-to-center {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.scroll-text.right-to-left {
+    transform: translateX(-100%);
+    opacity: 0;
+}
+
+
 .grid-cls {
-    background-color: #93DC5C;
+    background-color: #58a12b;
     padding: 20px;
     border-radius: 15px;
 }
@@ -38,13 +114,9 @@ h1 {
     text-align: center;
 }
 
-article{
-    color: #073B3A;
-}
-
 .anih1 {
     color: #dbd56e;
-    background: -webkit-linear-gradient(25deg, #073B3A, #073B3A);
+    background: -webkit-linear-gradient(25deg, #eee, #eae6e6);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-size: 3rem;
@@ -119,7 +191,7 @@ article{
 }
 
 .cardnewblast {
-    background: url("../../../assets/Images/tools/R.png");
+    background: url("../../../assets/Images/blast.svg");
     background-size: cover;
     background-color: rgb(86, 81, 81);
     opacity: .8;
@@ -128,10 +200,8 @@ article{
 }
 
 .cardnewlustration {
-    background: url("../../../assets/Images/tools/graphic_API_emblem.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
+    background: url("../../../assets/Images/align_illustration.img.e323d8.svg");
+    background-size: cover;
     background-color: rgb(86, 81, 81);
     opacity: .8;
     -webkit-box-shadow: 0 0 5px #000;
@@ -148,11 +218,9 @@ article{
 }
 
 .cardnewpep {
-    background: url("../../../assets/Images/tools/camp.jpg"), #6DB3F2;
-    background-size: contain;
-    background-repeat: no-repeat;
+    background: url("../../../assets/Images/camp2.svg"), #6DB3F2;
+    background-size: cover;
     background-color: rgb(86, 81, 81);
-    background-position: center;
     opacity: .8;
     -webkit-box-shadow: 0 0 5px #000;
     box-shadow: 0 0 5px #000;
@@ -363,7 +431,7 @@ li {
 .w-full {
     // padding-top: 30px;
     // padding-right: 30px;
-    padding-bottom: 100px;
+    padding-bottom: 50px;
     // padding-left: 30px;
 }
 
@@ -481,7 +549,7 @@ li {
 
 .bg-img:hover {
     box-shadow: 1px 8px 20px grey;
-    -webkit-transition:  box-shadow .6s ease-in;
+    -webkit-transition: box-shadow .6s ease-in;
 }
 
 .flip-card {
@@ -617,42 +685,54 @@ h1 {
 
 @keyframes appear {
     from {
-      opacity: 0;
-       transform: translateX(-100px); 
-    //   scale: 0.5;
+        opacity: 0;
+        transform: translateX(-100px);
+        //   scale: 0.5;
     }
-  
+
     to {
-      opacity: 1;
-     transform: translateX(0px); 
-    //   scale: 1;
+        opacity: 1;
+        transform: translateX(0px);
+        //   scale: 1;
     }
-  }
-  
-  .block {
+}
+
+.block {
     animation: appear 5s linear;
     animation-timeline: view();
     animation-range: entry 0%;
-  }
+}
 
-  @keyframes appear1 {
+@keyframes appear1 {
     from {
-      opacity: 0;
-       transform: translateX(-100px); 
-    //   scale: 0.5;
+        opacity: 0;
+        transform: translateX(-100px);
+        //   scale: 0.5;
     }
-  
+
     to {
-      opacity: 1;
-     transform: translateX(0px); 
-    //   scale: 1;
+        opacity: 1;
+        transform: translateX(0px);
+        //   scale: 1;
     }
-  }
-  
-  .blockright {
+}
+
+.blockright {
     animation: appear1 5s linear;
     animation-timeline: view();
     animation-range: entry 0%;
-  }
+}
 
-  
+//chart
+.gridchart{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.chartCard {
+    // border: 1px solid #000;
+    background-color: #dee9d6;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border: 1px solid white;
+}

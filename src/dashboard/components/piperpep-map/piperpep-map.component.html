@@ -46,10 +46,7 @@
     <div class="table-container">
         <!-- Loader Overlay -->
         <div *ngIf="isLoading" class="loader-overlay">
-            <div class="textWrapper">
-                <p class="text">Loading...</p>
-                <div class="invertbox"></div>
-            </div>
+            <app-loading></app-loading>
         </div>
         <section class="example-container mat-elevation-z8" tabindex="0">
             <table mat-table [dataSource]="dataSource" matSort>

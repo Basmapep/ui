@@ -1,0 +1,40 @@
+<div class="home">
+    <div class="grid-cls">
+        <div class="containers">
+            <div>
+                <h1 class="type anih1" style="padding-bottom: 20px; color: #073B3A; padding-top: 10px;">Find Rice Peptide</h1>
+            </div>
+        </div>
+
+        <form action="" [formGroup]="peptform">
+
+            <div class="mt-4">
+                <div class="input-group">
+                    <select [ngClass]="{'form-select1': category_Value == 'Peptide sequence',
+                    'form-select2': category_Value == 'Peptide modification',
+                    'form-select3': category_Value == 'Peptide Length',
+                    'form-select4': category_Value == 'Peptide Mass'}" formControlName="category_val"
+                        (change)="Select_Category($event)" class="form-select" aria-label="Select option">
+                        <option disabled value="0">Category</option>
+                        <option *ngFor="let item of category; let i = index" [value]="item">{{item}}</option>
+                    </select>
+
+                    <input formControlName="search" type="text" class="form-control" placeholder="Search..."
+                        aria-label="Search" />
+
+                    <button (click)="gotopeptide()" class="btn btn-outline-secondary" type="button" id="button-addon2">
+                        <img class="icons" src="../../../assets/icons/magnifier.png" alt="">
+                    </button>
+
+                </div>
+            </div>
+
+
+
+        </form>
+        <div style="padding-top: 8px; color: #073B3A;">
+            Examples for search: Glutelin, Carbamidomethyl, Q0JJ36, PEP.SEQ = CGHHUYDAS, Score >= 20
+        </div>
+    </div>
+
+</div>

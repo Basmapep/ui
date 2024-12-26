@@ -1,0 +1,105 @@
+.home {
+    width: 100%;
+    display: flex;
+    background-color: #93DC5C;
+    align-items: center;
+    justify-content: center;
+    height: 50vh;
+    margin-bottom: 2em;
+}
+
+.grid-cls {
+    background-color: #93DC5C;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.btn {
+    background-color: #fff;
+    color: black;
+    border: 1px;
+}
+
+.grid-cls {
+    width: min(95vw, 67rem);
+}
+
+h1 {
+    // font-family: 'Courier New', Courier, monospace;
+    // font-size: 3.052rem;
+    // font-weight: 700;
+    // text-align: center;
+}
+
+.containers {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.anih1 {
+    color: #dbd56e;
+    background: -webkit-linear-gradient(25deg, #073B3A, #073B3A);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 3rem;
+    font-weight: 500;
+    overflow: hidden;
+    white-space: nowrap;
+    // border-right: 2px solid;
+    animation: type 1.5s steps(90) 1.5s 1 normal both, cursor 1s step-end infinite;
+    position: relative;
+}
+
+@keyframes type {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes cursor {
+    50% {
+        border-color: transparent;
+    }
+}
+
+
+.form-select {
+    max-width: 130px;
+    background-color: #fff;
+    color: black;
+}
+
+.form-select1 {
+    max-width: 200px;
+}
+
+.form-select2 {
+    max-width: 220px;
+}
+
+.form-select3 {
+    max-width: 170px;
+}
+
+
+.form-select4 {
+    max-width: 160px;
+}
+
+.form-select5 {
+    max-width: 205px;
+}
+
+.form-select6 {
+    max-width: 205px;
+}
+
+.icons {
+    width: 20px;
+}

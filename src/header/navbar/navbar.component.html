@@ -1,7 +1,7 @@
 <nav class="navbar sticky-top navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">
-      <img class="image" src="../../assets/Images/logo/oie_KRi9rjRE9O1V.jpg" alt="">
+      <img class="image1" src="../../assets/Images/logo/ICAR-Logo.png" alt="">
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
       aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -13,10 +13,10 @@
           <a class="nav-link active" [ngClass]="{'selectedclr': selectmenu == 'home'}" (click)="gotomenu('home')"
             aria-current="page" routerLink="/home">Home</a>
         </li>
-        <!-- <li class="nav-item">
-          <a class="nav-link" [ngClass]="{'selectedclr': selectmenu == 'submission'}"
-            (click)="gotomenu('submission')">Submission</a>
-        </li> -->
+        <li class="nav-item">
+          <a class="nav-link" [ngClass]="{'selectedclr': selectmenu == 'search'}" routerLink="/search"
+            (click)="gotomenu('search')">Search</a>
+        </li>
         <li class="nav-item">
           <a class="nav-link" [ngClass]="{'selectedclr': selectmenu == 'download'}" (click)="gotomenu('download')"
             routerLink="/download">Download</a>
@@ -30,7 +30,10 @@
           <a class="nav-link" [ngClass]="{'selectedclr': selectmenu == 'team'}" (click)="gotomenu('team')"
             routerLink="/team">Team</a>
         </li>
-
+        <li class="nav-item">
+          <a class="nav-link" [ngClass]="{'selectedclr': selectmenu == 'help'}" (click)="gotomenu('help')"
+            routerLink="/help">Help</a>
+        </li>
 
         <!-- <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

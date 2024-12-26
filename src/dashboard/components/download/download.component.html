@@ -44,7 +44,7 @@
       </form> -->
 
 
-      <form action="" [formGroup]="download_Form" (ngSubmit)="getTableData()">
+      <form action="" [formGroup]="download_Form">
         <div class="row" formArrayName="skills">
           <div *ngFor="let arr of Download_skills.controls; let i = index" [formGroupName]="i" class="row mb-3">
             <div class="col-md-11">
@@ -70,7 +70,7 @@
                 <input formControlName="search_Pep" type="text" class="form-control" placeholder="Search..."
                   aria-label="Search" />
 
-                <button class="btn btn-outline-secondary" type="submit" id="button-addon2">
+                <button (click)="getTableData(i)" class="btn btn-outline-secondary" type="submit" id="button-addon2">
                   <img class="icons" src="../../../assets/icons/magnifier.png" alt="">
                 </button>
               </div>
@@ -89,6 +89,7 @@
           </div>
         </div>
       </form>
+      <!-- <input type="text" (keyup)="applyFilter($event)" /> -->
 
     </div>
 
@@ -108,17 +109,31 @@
   <div class="table-container">
     <!-- Loader Overlay -->
     <div *ngIf="isLoading" class="loader-overlay">
-      <div class="textWrapper">
-        <p class="text">Loading...</p>
-        <div class="invertbox"></div>
-      </div>
+      <div class="loader">
+        <div class="circle">
+            <div class="dot"></div>
+            <div class="outline"></div>
+        </div>
+        <div class="circle">
+            <div class="dot"></div>
+            <div class="outline"></div>
+        </div>
+        <div class="circle">
+            <div class="dot"></div>
+            <div class="outline"></div>
+        </div>
+        <div class="circle">
+            <div class="dot"></div>
+            <div class="outline"></div>
+        </div>
+    </div>
     </div>
 
     <section class="example-container mat-elevation-z8" tabindex="0">
       <table mat-table [dataSource]="dataSource" matSort>
 
         <ng-container matColumnDef="position">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> S.Np </th>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> S.No </th>
           <td mat-cell *matCellDef="let element; let i = index"> {{ currentPage * pageSize + i + 1 }}</td>
         </ng-container>
         <ng-container matColumnDef="accession">

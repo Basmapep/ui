@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder,  Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -20,7 +20,7 @@ export class PeptideComponent implements OnInit {
   ];
   title: any = '';
   public category_Value: any;
-  displayedColumns = ['accession', 'description', 'score', 'variety', 'peptidelength', 'avgMass', 'peptideModification', 'action'];
+  displayedColumns = ['sno', 'accession', 'description', 'score', 'variety', 'peptidelength', 'avgMass', 'peptideModification', 'action'];
   dataSource: MatTableDataSource<any> = new MatTableDataSource();
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -61,7 +61,9 @@ export class PeptideComponent implements OnInit {
   Select_Category(category: any) {
     this.category_Value = category.target.value
   }
+  getSerialNumber() {
 
+  }
   getTableData(category_Value: any, search: any) {
     this.isLoading = true
     this.peptide.getPeptide(category_Value, search).subscribe((data: any[]) => {
