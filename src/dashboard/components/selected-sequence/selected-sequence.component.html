@@ -100,7 +100,14 @@
 
 
 </div> -->
-
+<div>
+    <ul class="breadcrumb" (click)="backToSearch()">
+        <!-- <li><a href="/home">Home</a></li>
+        <li><a href="/tools">Tools</a></li> -->
+        <img src="../../../assets/icons/icons8-previous-24.png" style="width: 35px; cursor: pointer;" alt="">
+        <li>Back to Search</li>
+    </ul>
+</div>
 <div class="w-full">
     <div style="overflow: auto; max-height: 400px; max-width: 100%; border: 3px solid #25761b; border-radius: 10px;">
         <table class="table table-success" style="width: 100%;">
@@ -116,14 +123,14 @@
                     <th scope="col" style="white-space: nowrap;">Avg Mass</th>
                     <th scope="col" style="white-space: nowrap;"> Score </th>
                     <th scope="col" style="white-space: nowrap;">Peptide Modification</th>
-                    <th scope="col" style="white-space: nowrap;">Peptide Sequence Start</th>
+                    <!-- <th scope="col" style="white-space: nowrap;">Peptide Sequence Start</th>
                     <th scope="col" style="white-space: nowrap;">Peptide Matched Products</th>
                     <th scope="col" style="white-space: nowrap;">PeptideMhp</th>
                     <th scope="col" style="white-space: nowrap;">Pre Cursor Charge</th>
                     <th scope="col" style="white-space: nowrap;">Pre Cursor Intensity</th>
                     <th scope="col" style="white-space: nowrap;">Pre Cursor Mz</th>
                     <th scope="col" style="white-space: nowrap;">Pre Cursor Retention Time</th>
-                    <th scope="col" style="white-space: nowrap;">False Positive Rate</th>
+                    <th scope="col" style="white-space: nowrap;">False Positive Rate</th> -->
                 </tr>
             </thead>
             <tbody>
@@ -138,17 +145,18 @@
                     <td>{{ item.avgMass }}</td>
                     <td>{{ item.score }}</td>
                     <td>{{ item.peptideModification }}</td>
-                    <td>{{ item.peptideSeqStart }}</td>
+                    <!-- <td>{{ item.peptideSeqStart }}</td>
                     <td>{{ item.peptideMatchedProducts }}</td>
                     <td>{{ item.peptideMhp }}</td>
                     <td>{{ item.precursorCharge }}</td>
                     <td>{{ item.precursorIntensity }}</td>
                     <td>{{ item.precursorMz }}</td>
                     <td>{{ item.precursorRetentionTime }}</td>
-                    <td>{{ item.falsePositiveRate }}</td>
+                    <td>{{ item.falsePositiveRate }}</td> -->
                 </tr>
             </tbody>
         </table>
     </div>
 </div>
+
 

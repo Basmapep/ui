@@ -82,25 +82,30 @@ export class FileSubmissionComponent implements OnInit {
 
     if (event.dataTransfer?.files) {
       const droppedFiles = Array.from(event.dataTransfer.files);
+      console.log('droppedFiles: ', droppedFiles);
+      if (droppedFiles[0].type == 'text/csv') {
+        droppedFiles.forEach((file) => {
+          const reader = new FileReader();
 
-      droppedFiles.forEach((file) => {
-        const reader = new FileReader();
+          // Convert file to Base64
+          reader.onload = (e: ProgressEvent<FileReader>) => {
+            const base64String = e.target?.result ?? null;
+            this.files1.push({ file, base64: base64String });
+            this.ArrayFile = this.files1.map(ite => {
+              return {
+                userId: localStorage.getItem('userId'),
+                files: ite.base64,
+                filenames: ite.file.name
+              };
+            });
+          };
 
-        // Convert file to Base64
-        reader.onload = (e: ProgressEvent<FileReader>) => {
-          const base64String = e.target?.result ?? null;
-          this.files1.push({ file, base64: base64String });
-          this.ArrayFile = this.files1.map(ite => {
-            return {
-              userId: localStorage.getItem('userId'),
-              files: ite.base64,
-              filenames: ite.file.name
-            };
-          });
-        };
-
-        reader.readAsDataURL(file);
-      });
+          reader.readAsDataURL(file);
+        });
+      }
+      else {
+        this.toast.warning('Allow CSV Format')
+      }
     }
   }
 
@@ -114,24 +119,27 @@ export class FileSubmissionComponent implements OnInit {
     const input = event.target as HTMLInputElement;
     if (input.files) {
       const selectedFiles = Array.from(input.files);
+      if (selectedFiles[0].type == 'text/csv') {
+        selectedFiles.forEach((file) => {
+          const reader = new FileReader();
 
-      selectedFiles.forEach((file) => {
-        const reader = new FileReader();
+          reader.onload = (e: ProgressEvent<FileReader>) => {
+            const base64String = e.target?.result ?? null;
+            this.files1.push({ file, base64: base64String });
+            this.ArrayFile = this.files1.map(ite => {
+              return {
+                userId: localStorage.getItem('userId'),
+                files: ite.base64,
+                filenames: ite.file.name
+              };
+            });
+          };
 
-        reader.onload = (e: ProgressEvent<FileReader>) => {
-          const base64String = e.target?.result ?? null;
-          this.files1.push({ file, base64: base64String });
-          this.ArrayFile = this.files1.map(ite => {
-            return {
-              userId: localStorage.getItem('userId'),
-              files: ite.base64,
-              filenames: ite.file.name
-            };
-          });
-        };
-
-        reader.readAsDataURL(file);
-      });
+          reader.readAsDataURL(file);
+        });
+      } else {
+        this.toast.warning('Allow CSV Format')
+      }
 
       input.value = '';
     }

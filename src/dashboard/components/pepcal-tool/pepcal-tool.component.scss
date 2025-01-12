@@ -36,6 +36,7 @@
     border-radius: 15px;
     width: min(95vw, 67rem);
 }
+
 //Bread Crumbs
 ul.breadcrumb {
     padding: 10px 16px;
@@ -59,3 +60,13 @@ ul.breadcrumb {
     color: #01447e;
     text-decoration: underline;
   }
+
+  .clr{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #93DC5C;
+    color: white;
+    font-size: larger;
+    margin-top: 20px;
+}

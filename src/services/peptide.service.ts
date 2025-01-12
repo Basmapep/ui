@@ -13,8 +13,8 @@ export class PeptideService {
 
   constructor(private http: HttpClient) { }
 
-  getPeptide(category: string, searchValue: string): Observable<any[]> {
-    const params = new HttpParams().set('category', category).set('searchValue', searchValue);
+  getPeptide(category: string, searchValue: string,comparison:any): Observable<any[]> {
+    const params = new HttpParams().set('category', category).set('searchValue', searchValue).set('comparison',comparison);
     return this.http.get<any[]>(environment.serverUrl + ApiUrls.version + ApiUrls.peptide, { params });
   }
 
@@ -30,8 +30,16 @@ export class PeptideService {
     const params = new HttpParams().set('blastSequence', sequence);
     return this.http.get(environment.serverUrl + ApiUrls.version + ApiUrls.blast, { 
       params, 
-      responseType: 'text' // Specify response type as text
+      responseType: 'text'
     });
+  }
+
+  getChartData(data:any):Observable<any>{
+    const params = new HttpParams().set('bieChart', data);
+    return this.http.get(environment.serverUrl + ApiUrls.version + ApiUrls.charts, { 
+      params, 
+      responseType: 'text'
+    })
   }
   
 

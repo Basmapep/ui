@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { UserDialogComponent } from '../user-dialog/user-dialog.component';
 
 @Component({
@@ -12,25 +12,33 @@ export class NavbarComponent implements OnInit {
   selectmenu: any = 'home'
   userId: number = 1;
   userName: string = '';
+  activeRoute: string = '/home';
+
   constructor(private route: Router, public dialog: MatDialog) {
     this.userName = localStorage.getItem('UserName') || '';
   }
 
   ngOnInit(): void {
-  }
-  gotofeature = () => {
-    this.route.navigateByUrl('../')
+    this.route.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.activeRoute = this.route.url;
+      }
+    });
   }
 
-  gotomenu = (menu: any) => {
+
+  gotomenu(menu: any) {
     this.selectmenu = menu;
-
   }
   showNav: boolean = false
 
   openNav() {
     this.showNav = true;
 
+  }
+
+  isActive(router: string): boolean {
+    return this.activeRoute == router;
   }
   openMenu(value: string) {
 

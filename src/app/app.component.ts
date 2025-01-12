@@ -10,11 +10,18 @@ export class AppComponent {
   title = 'database';
 
   hideNavAndFooter = false;
+  hideFooter = false;
+  hideFooter1 = false;
+  hideFooter2 = false;
 
   constructor(private router: Router) {
     this.router.events.subscribe(() => {
       const currentRoute = this.router.url;
       this.hideNavAndFooter = currentRoute === '/login' || currentRoute === '/Sign-up';
+      this.hideFooter1 = currentRoute === '/components/select-Sequence';
+      this.hideFooter2 = currentRoute === '/components/pepCal';
+      this.hideFooter = currentRoute === '/submission';
+
     });
   }
 

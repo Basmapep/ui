@@ -64,7 +64,7 @@ button {
     padding: 10px 20px;
 }
 
-.truncate-text{
+.truncate-text {
     display: inline-block;
     max-width: 100%;
     white-space: nowrap;
@@ -122,6 +122,7 @@ button {
 .filesupload {
     max-width: 1320px;
     margin: 20px auto;
+    padding-bottom: 20px;
 }
 
 //button
@@ -170,7 +171,7 @@ button {
     width: 100%;
 }
 
-.userDetails{
+.userDetails {
     background-color: #5cbf7c;
     margin: 10px;
     padding: 10px;
@@ -178,7 +179,7 @@ button {
 
 }
 
-.details{
+.details {
     font-size: 20px;
     // color: white;
 }
@@ -322,4 +323,14 @@ button {
         outline-offset: 20px;
         opacity: 0;
     }
+}
+
+.clr {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #93DC5C;
+    color: white;
+    font-size: larger;
+    margin-top: 20px;
 }

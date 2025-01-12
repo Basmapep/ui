@@ -24,6 +24,13 @@ export type ChartOptions = {
   labels: any;
 };
 
+export type chartOptionScore = {
+  seriesScore: ApexNonAxisChartSeries;
+  chartScore: ApexChart;
+  responsiveScore: ApexResponsive[];
+  labelsScore: any;
+};
+
 
 export type ChartOptions1 = {
   series: ApexAxisChartSeries;
@@ -45,7 +52,10 @@ export class HomeComponent implements OnInit {
   scrollDirection: 'up' | 'down' = 'up'; // Tracks scroll direction
   private lastScrollTop: number = 0; // Tracks the last scroll position
   isInitial: boolean = true; // Tracks the initial animation state
-
+  peptideLenght: any = [];
+  scoreRange: any = [];
+  dynamicLink: string = '';
+  @HostListener('window:scroll', [])
 
   category: any = [
     'Accession', 'Score', 'Peptide sequence', 'Peptide modification', 'Peptide Length', 'Peptide Mass'
@@ -58,8 +68,9 @@ export class HomeComponent implements OnInit {
   public category_Value: any;
   peptform: FormGroup;
   public Search_Array: any[] = [];
+
   public chartOptions: ChartOptions = {
-    series: [44, 55, 41, 17, 15], // Provide a default value
+    series: [], // Initial empty series
     chart: {
       type: 'pie',
       height: 350
@@ -77,8 +88,37 @@ export class HomeComponent implements OnInit {
         }
       }
     ],
-    labels: ['Team A', 'Team B', 'Team C', 'Team D', 'Team E']
+    labels: [
+      "0-20",
+      "21-40",
+      "41-60",
+      "61-80",
+      "81-100"
+    ]
   };
+
+  public chartOptionScore: ChartOptions = {
+    series: [],
+    chart: {
+      type: 'pie',
+      height: 350
+    },
+    responsive: [
+      {
+        breakpoint: 480,
+        options: {
+          chart: {
+            width: 200
+          },
+          legend: {
+            position: 'bottom'
+          }
+        }
+      }
+    ],
+    labels: ['Below 1000', '1001-2000', '2001-3000', '3001-4000', '4001-5000']
+  };
+
   public chartOptions1: ChartOptions1 = {
     series: [
       {
@@ -113,47 +153,76 @@ export class HomeComponent implements OnInit {
       ]
     }
   };
+
   constructor(private route: Router, private fb: FormBuilder, private peptide: PeptideService) {
     this.peptform = this.fb.group({
       category_val: ['0', Validators.required],
       search: ['', Validators.required],
     })
+    this.chartOptions.series = [];
+    this.chartOptionScore.series = [];
 
-
-
-    // this.chartOptions = {
-    //   series: [44, 55, 13, 43, 22],
-    //   chart: {
-    //     width: 380,
-    //     type: "pie"
-    //   },
-    //   labels: ["Team A", "Team B", "Team C", "Team D", "Team E"],
-    //   responsive: [
-    //     {
-    //       breakpoint: 480,
-    //       options: {
-    //         chart: {
-    //           width: 200
-    //         },
-    //         legend: {
-    //           position: "bottom"
-    //         }
-    //       }
-    //     }
-    //   ]
-    // };
+     this.chartOptions = {
+      series: [], // Initial empty series
+      chart: {
+        type: 'pie',
+        height: 350
+      },
+      responsive: [
+        {
+          breakpoint: 480,
+          options: {
+            chart: {
+              width: 200
+            },
+            legend: {
+              position: 'bottom'
+            }
+          }
+        }
+      ],
+      labels: [
+        "0-20",
+        "21-40",
+        "41-60",
+        "61-80",
+        "81-100"
+      ]
+    };
   }
 
   ngOnInit(): void {
-    // AOS.init({ disable: 'mobile' });//AOS - 2
-    // AOS.refresh();
-    setTimeout(() => {
-      this.isInitial = false; // After the animation is completed, remove 'initial'
-    }, 2000);
+    this.getAllChartData();
+  }
+
+  onScroll(): void {
+    const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    if (this.isInitial) return;
+    if (currentScrollTop > this.lastScrollTop) {
+      this.scrollDirection = 'down';
+    } else {
+      this.scrollDirection = 'up';
+    }
+    this.lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop;
   }
 
   Select_Category(category: any) {
     this.category_Value = category.target.value
+  }
+
+  // Chart Function
+  getAllChartData() {
+    this.peptide.getChartData('bieChart').subscribe((res: any) => {
+      this.peptideLenght.push(JSON.parse(res));
+      const range = this.peptideLenght[0].Peptide_Length_Range.map((item: any) => item.range);
+      const totalSum = this.peptideLenght[0].Peptide_Length_Range.map((item: any) => item.totalSum);
+
+      const rangeScore = this.peptideLenght[0].Score_Range.map((item: any) => item.range);
+      const totalSumScore = this.peptideLenght[0].Score_Range.map((item: any) => item.totalSum)
+      this.chartOptions.series = totalSum;
+      this.chartOptionScore.series = totalSumScore;
+      // this.chartOptions.labels = range;
+    })
   }
 
   gotopeptide() {
@@ -170,33 +239,8 @@ export class HomeComponent implements OnInit {
   pepCalTool() {
     this.route.navigate(['/components/pepCal'])
   }
-  dynamicLink: string = '';
 
   navigateTo(link: string) {
     window.location.href = link;
   }
-
-
-
-  @HostListener('window:scroll', [])
-  onScroll(): void {
-    const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-    if (this.isInitial) return; // Skip scroll logic during initial animation
-
-    if (currentScrollTop > this.lastScrollTop) {
-      // Scrolling down
-      this.scrollDirection = 'down';
-    } else {
-      // Scrolling up
-      this.scrollDirection = 'up';
-    }
-
-    this.lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop; // Avoid negative scroll values
-  }
-
-
-
-
-
 }

@@ -17,7 +17,7 @@
 .parallax {
     width: 100%;
     display: flex;
-    background-image: url("../../../assets/Images/home-rice.jpg");
+    background-image: url("../../../assets/Images/home2.jpg");
     min-height: 70%;
     background-attachment: fixed;
     background-position: center;
@@ -37,7 +37,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    // background: rgba(0, 0, 0, 0.5);
     /* Adjust the opacity (0.5) as needed */
     z-index: -1;
     /* Places the overlay below the .home content */
@@ -155,7 +155,7 @@ h1 {
 
 
 .cardnew1 {
-    background: url("../../../assets/Images/uniprotkb_illustration.img.51c868.svg");
+    // background: url("../../../assets/Images/uniprotkb_illustration.img.51c868.svg");
     background-size: cover;
     background-color: rgb(86, 81, 81);
     opacity: .8;
@@ -164,7 +164,7 @@ h1 {
 }
 
 .cardnew2 {
-    background: url("../../../assets/Images/cluster_illustration.img.c2703d.svg");
+    // background: url("../../../assets/Images/cluster_illustration.img.c2703d.svg");
     background-size: cover;
     background-color: rgb(86, 81, 81);
     opacity: .8;
@@ -173,7 +173,7 @@ h1 {
 }
 
 .cardnew3 {
-    background: url("../../../assets/Images/species_illustration.img.d6cffe.svg");
+    // background: url("../../../assets/Images/species_illustration.img.d6cffe.svg");
     background-size: cover;
     background-color: rgb(86, 81, 81);
     opacity: .8;
@@ -182,7 +182,7 @@ h1 {
 }
 
 .cardnew4 {
-    background: url("../../../assets/Images/archive_illustration.img.39a0b8.svg");
+    // background: url("../../../assets/Images/archive_illustration.img.39a0b8.svg");
     background-size: cover;
     background-color: rgb(86, 81, 81);
     opacity: .8;
@@ -191,7 +191,7 @@ h1 {
 }
 
 .cardnewblast {
-    background: url("../../../assets/Images/blast.svg");
+    // background: url("../../../assets/Images/blast.svg");
     background-size: cover;
     background-color: rgb(86, 81, 81);
     opacity: .8;
@@ -200,7 +200,7 @@ h1 {
 }
 
 .cardnewlustration {
-    background: url("../../../assets/Images/align_illustration.img.e323d8.svg");
+    // background: url("../../../assets/Images/align_illustration.img.e323d8.svg");
     background-size: cover;
     background-color: rgb(86, 81, 81);
     opacity: .8;
@@ -209,7 +209,7 @@ h1 {
 }
 
 .cardnewid {
-    background: url("../../../assets/Images/id-mapping_illustration.img.b18a47.svg");
+    // background: url("../../../assets/Images/id-mapping_illustration.img.b18a47.svg");
     background-size: cover;
     background-color: rgb(86, 81, 81);
     opacity: .8;
@@ -218,7 +218,7 @@ h1 {
 }
 
 .cardnewpep {
-    background: url("../../../assets/Images/camp2.svg"), #6DB3F2;
+    // background: url("../../../assets/Images/camp2.svg"), #6DB3F2;
     background-size: cover;
     background-color: rgb(86, 81, 81);
     opacity: .8;
@@ -493,7 +493,7 @@ li {
 
 .bg-img {
 
-    background: url("../../../assets/Images/uniprotkb_illustration.img.51c868.svg");
+    // background: url("../../../assets/Images/uniprotkb_illustration.img.51c868.svg");
     background-size: cover;
     background-color: rgb(86, 81, 81);
     // opacity: .8;
@@ -505,7 +505,7 @@ li {
 }
 
 .bg-img2 {
-    background: url("../../../assets/Images/cluster_illustration.img.c2703d.svg");
+    // background: url("../../../assets/Images/cluster_illustration.img.c2703d.svg");
     background-size: cover;
     background-color: rgb(86, 81, 81);
     // opacity: .8;
@@ -517,7 +517,7 @@ li {
 }
 
 .bg-img3 {
-    background: url("../../../assets/Images/species_illustration.img.d6cffe.svg");
+    // background: url("../../../assets/Images/species_illustration.img.d6cffe.svg");
     background-size: cover;
     background-color: rgb(86, 81, 81);
     // opacity: .8;
@@ -529,7 +529,7 @@ li {
 }
 
 .bg-img4 {
-    background: url("../../../assets/Images/archive_illustration.img.39a0b8.svg");
+    // background: url("../../../assets/Images/archive_illustration.img.39a0b8.svg");
     background-size: cover;
     background-color: rgb(86, 81, 81);
     // opacity: .8;
@@ -553,7 +553,7 @@ li {
 }
 
 .flip-card {
-    background: url("../../../assets/Images/archive_illustration.img.39a0b8.svg");
+    // background: url("../../../assets/Images/archive_illustration.img.39a0b8.svg");
     background-color: rgb(86, 81, 81);
     opacity: .8;
     // background-color: transparent;
@@ -732,7 +732,19 @@ h1 {
 
 .chartCard {
     // border: 1px solid #000;
-    background-color: #dee9d6;
+    // background-color: #dee9d6;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border: 1px solid white;
+}
+
+.paragraph{
+    font-size: 16px;
+    font-family: "Merriweather", serif !important;
+    line-height: 34px;
+    text-align: justify;
+    padding-top: 2rem;
+}
+
+#chart{
+    padding: 0px 10px 0 10px;
 }

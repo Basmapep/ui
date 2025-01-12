@@ -2,7 +2,8 @@
     <div class="grid-cls">
         <div class="containers">
             <div>
-                <h1 class="type anih1" style="padding-bottom: 20px; color: #073B3A; padding-top: 10px;">Find Rice Peptide</h1>
+                <h1 class="type anih1" style="padding-bottom: 20px; color: #073B3A; padding-top: 10px;">Find Rice
+                    Peptide</h1>
             </div>
         </div>
 
@@ -17,6 +18,14 @@
                         (change)="Select_Category($event)" class="form-select" aria-label="Select option">
                         <option disabled value="0">Category</option>
                         <option *ngFor="let item of category; let i = index" [value]="item">{{item}}</option>
+                    </select>
+
+                    <select *ngIf="showScore"
+                        [ngClass]="{'form-select4': symbolName == 'Greater than',
+                  'form-select3': symbolName == 'Lesser than','form-select5': symbolName == 'Greater than or equal to','form-select6': symbolName == 'Lesser than or equal to'}"
+                        formControlName="symbols_Pep" (change)="Select_Symbol($event)" class="form-select"
+                        aria-label="Select option">
+                        <option *ngFor="let ite of score" [value]="ite.name">{{ite.name}}</option>
                     </select>
 
                     <input formControlName="search" type="text" class="form-control" placeholder="Search..."

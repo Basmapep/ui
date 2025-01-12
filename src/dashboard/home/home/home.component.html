@@ -47,62 +47,31 @@
         'left-to-center': !isInitial && scrollDirection === 'up',
         'right-to-left': scrollDirection === 'down'
       }">
-        Welcome to BasmaPep Database <br> <img style="border-radius: 20px; width: 60%;" src="../../../assets/Images/logo/oie_KRi9rjRE9O1V.jpg" alt="">
+      <!-- Welcome to BasmaPep Database <br>  -->
+        <img style="border-radius: 20px; width: 60%;"
+            src="../../../assets/Images/logo/oie_KRi9rjRE9O1V.jpg" alt="">
     </h1>
 </div>
 <article style="padding-bottom: 100px;">
-    <h1 style="text-align: center;">Peptide Database</h1>
-    <p class="">The Rice Peptide Search Database is a groundbreaking resource developed by the Rice Institute in
-        Thanjavur, in
-        collaboration with Ponnaiya's Code and Genome Pvt. Ltd., Madurai. </p>
-    <p>This innovative platform aims to revolutionize
-        rice research by providing a specialized repository dedicated to rice-derived peptides. With the increasing
-        global demand for sustainable agricultural practices and healthier food options, the database focuses on
-        uncovering the therapeutic potential and biological properties of rice peptides.</p>
-
-    <p>
-        Rice peptides are short chains of amino acids known for their diverse bioactive properties, including
-        antimicrobial, antioxidant, and anti-inflammatory effects. These properties make them valuable in
-        pharmaceuticals, nutraceuticals, and crop improvement. The Rice Peptide Search Database offers researchers
-        access to comprehensive peptide sequence information, functional annotations, and experimental data, enabling a
-        deeper understanding of rice genomics and its applications in biotechnology.
+    <h1 style="text-align: center;">Welcome to BasmaPep Database</h1>
+    <p class="paragraph">BasmaPep-The Basmati rice peptide database is developed using experimentally derived
+        peptides from the mass spectrometry analysis of Indian Basmati rice seed proteome. The
+        peptides with more than 7 amino acids are presented in the database. It has <strong>164373</strong> number of
+        peptides the <strong>protein identification
+            score and Modification
+            of 0 to 4255.809p.</strong> The search page allows for complex querying of peptides based on accession
+        number, peptide length, peptide sequence, score, and modifications. BasmaPep database has
+        inbuilt BLAST tool, MAP tool, PepCalc for identifying, mapping and analysing the
+        physiochemical properties of the query peptide sequence. The enabled link to NCBI-BLAST
+        will help researchers to locate their query sequence with the global datasets. The inbuilt link
+        to Anti-microbial peptide database is another attraction for researchers. Apart from
+        supporting the computational analysis, the login and data submission pages of BasmaPep
+        ensures secure access and allow registered users to contribute new peptide data. This
+        integrated approach allows researchers to explore, analyse, and share rice peptide data,
+        supporting advancements in crop research and bioinformatics. This database will incorporate
+        millions more curated peptides in future with its tissue specifications and significance by our
+        team from our on-going and upcoming research in Basmati proteomics.
     </p>
-    <h2>Key features of the database include:</h2>
-    <ul style="padding-top: 10px; list-style-type: none ;">
-        <li> <b>Comprehensive Peptide Data: </b> The database houses an extensive collection of peptide sequences
-            derived
-            from various
-            rice species, each annotated with functional information.</li>
-
-        <li> <b>Advanced Search Tools:</b> Sophisticated search algorithms, developed by Ponnaiya's Code, allow
-            users to
-            quickly locate
-            peptides of interest based on their sequence, function, or bioactivity.</li>
-
-        <li><b>Functional Annotations:</b> The database includes detailed annotations for each peptide, such as
-            bioactivity profiles,
-            potential therapeutic uses, and gene ontology classifications.</li>
-
-        <li> <b>Interactive Tools:</b> Users can visualize peptide structures, compare sequences across species, and
-            explore potential
-            applications in medicine, agriculture, and food science.</li>
-
-        <li> <b>Collaboration Ready: </b>
-            The database is designed to foster collaboration among researchers and institutions,
-            encouraging the sharing of insights, experimental results, and innovations.</li>
-
-        <li> This database, a product of a collaboration between leading research institutions and biotech
-            companies, is
-            poised
-            to advance the study of rice peptides, offering immense potential for breakthroughs in agriculture,
-            health,
-            and
-            sustainability. It stands as a testament to the expertise and dedication of the teams at the Rice
-            Institute,
-            Thanjavur, and Genome Pvt. Ltd., Madurai, who continue to drive cutting-edge research in plant genomics.
-        </li>
-
-    </ul>
 </article>
 
 
@@ -154,27 +123,31 @@
 
 
 <section style="max-width: 110rem; margin: 0 auto; padding-bottom: 100px;">
-    <div class="gridchart">
-        <div class=" chartCard">
+    <div class="row">
+        <!-- gridchart -->
+        <div class=" chartCard col-lg-6">
             <div id="chart">
-                <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart" [labels]="chartOptions.labels"
-                    [responsive]="chartOptions.responsive"></apx-chart>
+                <h2>Peptide Indentification Score</h2>
+
+                <apx-chart [series]="chartOptionScore.series" [chart]="chartOptionScore.chart"
+                    [labels]="chartOptionScore.labels" [responsive]="chartOptionScore.responsive"></apx-chart>
             </div>
-    
+
         </div>
 
-        <div class=" chartCard">
+        <div class=" chartCard col-lg-6">
             <div id="chart">
+                <h2>Peptide Sequence Length</h2>
                 <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart" [labels]="chartOptions.labels"
                     [responsive]="chartOptions.responsive"></apx-chart>
             </div>
-    
+
         </div>
     </div>
-   
+
 </section>
 
-<section style="max-width: 110rem; margin: 0 auto; padding-bottom: 100px;">
+<!-- <section style="max-width: 110rem; margin: 0 auto; padding-bottom: 100px;">
     <div style="width: 100%;">
         <div class="chartCard">
             <apx-chart
@@ -187,10 +160,10 @@
           </div>
           
     </div>
-</section>
+</section> -->
 
 
-<div class="w-full" style="text-align: center;">
+<!-- <div class="w-full" style="text-align: center;">
     <h1 style="padding: 30px;">
         <svg xmlns="http://www.w3.org/2000/svg" style="width: 40px;" viewBox="0 0 512 512">
             <path
@@ -282,4 +255,4 @@
         </div>
 
     </div>
-</div>
+</div> -->

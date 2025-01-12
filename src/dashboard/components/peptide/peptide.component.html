@@ -1,20 +1,34 @@
-<div class="home">
+<div class="home" *ngIf="!showSelected">
   <div class="grid-cls">
-    <h1 style="color: #073B3A;">{{this.category_Value}}</h1>
+    <div class="containers">
+      <div>
+        <h1 class="type anih1" style="padding-bottom: 20px; color: #073B3A; padding-top: 10px;">Find Rice
+          Peptide</h1>
+      </div>
+    </div>
+    <!-- <h1 style="color: #073B3A;">{{this.category_Value}}</h1> -->
     <div class="mt-4">
       <form action="" [formGroup]="peptide_Form" (ngSubmit)="getAnotherData()">
         <div class="input-group">
-          <select [ngClass]="{'form-select1': category_Value == 'Peptide sequence',
-                    'form-select2': category_Value == 'Peptide modification',
-                    'form-select3': category_Value == 'Peptide Length',
-                    'form-select4': category_Value == 'Peptide Mass'}" formControlName="categ_pep"
-            (change)="Select_Category($event)" class="form-select" aria-label="Select option">
+          <select [ngClass]="{'form-select1': selectedCategory == 'Peptide sequence',
+                    'form-select2': selectedCategory == 'Peptide modification',
+                    'form-select3': selectedCategory == 'Peptide Length',
+                    'form-select4': selectedCategory == 'Peptide Mass'}" formControlName="categ_pep"
+            (change)="updateDisplayedColumns($event)" class="form-select" aria-label="Select option">
             <option disabled value="0">Category</option>
             <option *ngFor="let item of category; let i = index" [value]="item">{{item}}</option>
           </select>
 
+          <select *ngIf="showScore"
+            [ngClass]="{'form-select4': symbolName == 'Greater than',
+    'form-select3': symbolName == 'Lesser than','form-select5': symbolName == 'Greater than or equal to','form-select6': symbolName == 'Lesser than or equal to'}"
+            formControlName="symbols_Pep" (change)="Select_Symbol($event)" class="form-select"
+            aria-label="Select option">
+            <option *ngFor="let ite of score" [value]="ite.name">{{ite.name}}</option>
+          </select>
+
           <!-- Search Input -->
-          <input formControlName="search_pep" type="text" class="form-control" placeholder="Search..."
+          <input [readonly]="isReadonly" formControlName="search_pep" type="text" class="form-control" placeholder="Search..."
             aria-label="Search" />
 
           <!-- Search Button with Icon -->
@@ -23,12 +37,15 @@
 
         </div>
       </form>
+      <div style="padding-top: 8px; color: #073B3A;">
+        Examples for search: Glutelin, Carbamidomethyl, Q0JJ36, PEP.SEQ = CGHHUYDAS, Score >= 20
+      </div>
     </div>
 
   </div>
 </div>
 
-<div class="w-full">
+<div class="w-full" *ngIf="!showSelected">
   <div class="table-container">
     <!-- Loader Overlay -->
     <div *ngIf="isLoading" class="loader-overlay">
@@ -39,27 +56,31 @@
     <section class="example-container mat-elevation-z8" tabindex="0" [class.fade]="isLoading">
       <table mat-table [dataSource]="dataSource" matSort>
         <!-- Columns -->
-        <ng-container matColumnDef="sno">
+        <!-- <ng-container matColumnDef="position">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> S.No </th>
-          <td mat-cell *matCellDef="let element; let i= index">   {{ i + 1 + (paginator.pageIndex * paginator.pageSize) }} </td>
+          <td mat-cell *matCellDef="let element; let i= index"> {{ i + 1 + (paginator.pageIndex * paginator.pageSize) }}
+          </td>
+        </ng-container> -->
+
+        <ng-container *ngFor="let column of displayedColumns; let i = index" [matColumnDef]="column">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ displayedHeaders[i] }}</th>
+          <td mat-cell *matCellDef="let element"> {{element[column] == 'action' ? '':element[column]}}
+            <img *ngIf="element[column] === 'action'" (click)="goToValue(element)" style="width: 30px; cursor: pointer;"
+              src="../../../assets/icons/next.png" alt="">
+          </td>
         </ng-container>
 
-        <ng-container matColumnDef="accession">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Accession </th>
-          <td mat-cell *matCellDef="let element"> {{element.accession}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="description">
+        <!-- <ng-container matColumnDef="description">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Description </th>
           <td mat-cell *matCellDef="let element"> {{element.description}} </td>
-        </ng-container>
+        </ng-container> -->
 
-        <ng-container matColumnDef="score">
+        <!-- <ng-container matColumnDef="score">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Score</th>
           <td mat-cell *matCellDef="let element"> {{element.score}} </td>
-        </ng-container>
+        </ng-container> -->
 
-        <ng-container matColumnDef="variety">
+        <!-- <ng-container matColumnDef="variety">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Variety</th>
           <td mat-cell *matCellDef="let element"> {{element.variety}} </td>
         </ng-container>
@@ -72,20 +93,20 @@
         <ng-container matColumnDef="avgMass">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Avg Mass</th>
           <td mat-cell *matCellDef="let element"> {{element.avgMass}} </td>
-        </ng-container>
+        </ng-container> -->
 
-        <ng-container matColumnDef="peptideModification">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Peptide Modification</th>
-          <td mat-cell *matCellDef="let element"> {{element.peptideModification}} </td>
-        </ng-container>
+        <!-- <ng-container matColumnDef="peptideSeq">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Peptide Sequence</th>
+          <td mat-cell *matCellDef="let element"> {{element.peptideSeq}} </td>
+        </ng-container> -->
 
-        <ng-container matColumnDef="action">
+        <!-- <ng-container matColumnDef="action">
           <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
           <td mat-cell *matCellDef="let element">
             <img (click)="goToValue(element)" style="width: 30px; cursor: pointer;" src="../../../assets/icons/next.png"
               alt="">
           </td>
-        </ng-container>
+        </ng-container>  -->
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
@@ -99,4 +120,67 @@
     <mat-paginator class="pagination" [pageSizeOptions]="[10, 25, 100]"
       aria-label="Select page of users"></mat-paginator>
   </div>
+</div>
+
+
+<div class="breadcrumb-width" *ngIf="showSelected">
+  <div>
+    <ul class="breadcrumb" (click)="backToSearch()">
+      <!-- <li><a href="/home">Home</a></li>
+        <li><a href="/tools">Tools</a></li> -->
+      <img src="../../../assets/icons/icons8-previous-24.png" style="width: 35px; cursor: pointer;" alt="">
+      <li>Back to Search</li>
+    </ul>
+  </div>
+  <div class="w-full">
+    <div style="overflow: auto; max-height: 400px; max-width: 100%; border: 3px solid #25761b; border-radius: 10px;">
+      <table class="table table-success" style="width: 100%;">
+        <thead>
+          <tr>
+            <th class="th" scope="col" style="white-space: nowrap;">S.No</th>
+            <th class="th" scope="col" style="white-space: nowrap;">Accession</th>
+            <th class="th" scope="col" style="white-space: nowrap;">Variety</th>
+            <th class="th" scope="col" style="white-space: nowrap;">Entry</th>
+            <th class="th" scope="col" style="white-space: nowrap;">Description</th>
+            <th class="th" scope="col" style="white-space: nowrap;">Peptide Sequence</th>
+            <th class="th" scope="col" style="white-space: nowrap;">Peptide Length</th>
+            <th class="th" scope="col" style="white-space: nowrap;">Avg Mass</th>
+            <th class="th" scope="col" style="white-space: nowrap;"> Score </th>
+            <th class="th" scope="col" style="white-space: nowrap;">Peptide Modification</th>
+            <!-- <th scope="col" style="white-space: nowrap;">Peptide Sequence Start</th>
+                  <th scope="col" style="white-space: nowrap;">Peptide Matched Products</th>
+                  <th scope="col" style="white-space: nowrap;">PeptideMhp</th>
+                  <th scope="col" style="white-space: nowrap;">Pre Cursor Charge</th>
+                  <th scope="col" style="white-space: nowrap;">Pre Cursor Intensity</th>
+                  <th scope="col" style="white-space: nowrap;">Pre Cursor Mz</th>
+                  <th scope="col" style="white-space: nowrap;">Pre Cursor Retention Time</th>
+                  <th scope="col" style="white-space: nowrap;">False Positive Rate</th> -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of tabelData; let i = index">
+            <td class="td">{{ i + 1 }}</td>
+            <td class="td">{{ item.accession }}</td>
+            <td class="td">{{ item.variety }}</td>
+            <td class="td">{{ item.entry }}</td>
+            <td class="td">{{ item.description }}</td>
+            <td class="td">{{ item.peptideSeq }}</td>
+            <td class="td">{{ item.peptideSeqLength }}</td>
+            <td class="td">{{ item.avgMass }}</td>
+            <td class="td">{{ item.score }}</td>
+            <td class="td">{{ item.peptideModification }}</td>
+            <!-- <td>{{ item.peptideSeqStart }}</td>
+                  <td>{{ item.peptideMatchedProducts }}</td>
+                  <td>{{ item.peptideMhp }}</td>
+                  <td>{{ item.precursorCharge }}</td>
+                  <td>{{ item.precursorIntensity }}</td>
+                  <td>{{ item.precursorMz }}</td>
+                  <td>{{ item.precursorRetentionTime }}</td>
+                  <td>{{ item.falsePositiveRate }}</td> -->
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
 </div>

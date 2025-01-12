@@ -12,8 +12,18 @@ import { PeptideService } from 'src/services/peptide.service';
   styleUrls: ['./search-peptide.component.scss']
 })
 export class SearchPeptideComponent implements OnInit {
+  symbolName: any = '';
+  showScore: boolean = false;
+  public symbolData: any = '';
 
-
+  score: any = [
+    { name: 'Greater than', symbol: '>' },
+    { name: 'Lesser than', symbol: '<' },
+    { name: 'Equal to', symbol: '==' },
+    { name: 'Greater than or equal to', symbol: '>=' },
+    { name: 'Lesser than or equal to', symbol: '<=' },
+    { name: 'Range' },
+  ]
   category: any = [
     'Accession', 'Score', 'Peptide sequence', 'Peptide modification', 'Peptide Length', 'Peptide Mass'
   ]
@@ -34,8 +44,25 @@ export class SearchPeptideComponent implements OnInit {
 
   Select_Category(category: any) {
     this.category_Value = category.target.value
+   
+    if (category.target.value === 'Score' || category.target.value == 'Peptide Length' || category.target.value == 'Peptide Mass') {
+      this.showScore = true;
+    } else {
+      this.showScore = false;
+      this.symbolData = '';
+      this.symbolName = '';
+    }
   }
-
+  Select_Symbol(event: any) {
+    let selected_Score = this.score.filter((item: any) => item.name == event.target.value)
+    this.symbolData = selected_Score[0].symbol
+    // this.download_Form.get('skills')?.value
+    
+    // this.download_Form.get('skills')?.value.forEach((ite: any) => {
+    //   ite.symbol = selected_Score[0].symbol
+    // })
+    this.symbolName = selected_Score[0].name
+  }
   gotopeptide() {
     const search = this.peptform.value.search
     if (search != '' && this.category_Value != undefined && this.category_Value != 0) {

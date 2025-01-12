@@ -46,7 +46,7 @@ export class PiperpepMapComponent implements OnInit {
     if (this.peptide_Form.valid) {
       this.isLoading = true;
       if (this.peptide_Form.value.categ_pep != null && this.peptide_Form.value.search_pep != null) {
-        this.peptide.getPeptide(this.peptide_Form.value.categ_pep, this.peptide_Form.value.search_pep).subscribe((data: any[]) => {
+        this.peptide.getPeptide(this.peptide_Form.value.categ_pep, this.peptide_Form.value.search_pep,'Equal').subscribe((data: any[]) => {
           this.showTable = true;
           if (data.length > 0) {
             this.dataSource.data = data;

@@ -4,6 +4,7 @@ import { LoginComponent } from 'src/authentication/login/login.component';
 import { SignUpComponent } from 'src/authentication/sign-up/sign-up.component';
 import { AuthGuard } from 'src/constants/auth.guard';
 import { DownloadComponent } from 'src/dashboard/components/download/download.component';
+import { PeptideComponent } from 'src/dashboard/components/peptide/peptide.component';
 import { TeamComponent } from 'src/dashboard/components/team/team.component';
 import { ToolsComponent } from 'src/dashboard/components/tools/tools.component';
 import { UserHelpComponent } from 'src/dashboard/components/user-help/user-help.component';
@@ -21,10 +22,10 @@ const routes: Routes = [
   { path: 'team', component: TeamComponent },
   {
     path: "tools", component: ToolsComponent,},
-  // { path: 'peptide', component: PeptideComponent },
+  { path: 'search', component: PeptideComponent },
   { path: 'components', loadChildren: () => import('../dashboard/components/components.module').then((m) => m.ComponentsModule) },
   { path: 'download', component: DownloadComponent },
-  { path: 'search', component: SearchPeptideComponent },
+  { path: 'search1', component: SearchPeptideComponent },
   { path: 'help', component: UserHelpComponent },
   { path: 'submission', component: FileSubmissionComponent,canActivate: [AuthGuard], },
     { path: '**', redirectTo: 'login' }

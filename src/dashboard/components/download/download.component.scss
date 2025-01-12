@@ -12,7 +12,11 @@
     padding-bottom: 9.25rem;
     /* 36px */
 }
-
+.error {
+    border-color: rgb(210, 107, 107);
+    box-shadow: 0 0 5px rgb(219, 48, 48);
+  }
+  
 .btn {
     background-color: white;
     color: black;

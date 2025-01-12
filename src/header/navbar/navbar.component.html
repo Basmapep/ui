@@ -10,28 +10,28 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" [ngClass]="{'selectedclr': selectmenu == 'home'}" (click)="gotomenu('home')"
+          <a  [class.active]="isActive('/home')" class="nav-link active" (click)="gotomenu('/home')"
             aria-current="page" routerLink="/home">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [ngClass]="{'selectedclr': selectmenu == 'search'}" routerLink="/search"
-            (click)="gotomenu('search')">Search</a>
+          <a [class.active]="isActive('/search')"class="nav-link" routerLink="/search"
+            (click)="gotomenu('/search')">Search</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [ngClass]="{'selectedclr': selectmenu == 'download'}" (click)="gotomenu('download')"
+          <a [class.active]="isActive('/download')" class="nav-link" (click)="gotomenu('/download')"
             routerLink="/download">Download</a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" [ngClass]="{'selectedclr': selectmenu == 'tools'}" (click)="gotomenu('tools')"
+          <a [class.active]="isActive('/tools')" class="nav-link"  (click)="gotomenu('/tools')"
             routerLink="/tools">Tools</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [ngClass]="{'selectedclr': selectmenu == 'team'}" (click)="gotomenu('team')"
+          <a [class.active]="isActive('/team')" class="nav-link"  (click)="gotomenu('/team')"
             routerLink="/team">Team</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [ngClass]="{'selectedclr': selectmenu == 'help'}" (click)="gotomenu('help')"
+          <a class="nav-link" [class.active]="isActive('/help')" (click)="gotomenu('/help')"
             routerLink="/help">Help</a>
         </li>
 

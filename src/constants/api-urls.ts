@@ -5,4 +5,6 @@ export class ApiUrls {
     static readonly signin = 'UserDetails/createNewUser'
     static readonly login = 'UserDetails/login'
     static readonly blast = 'peptide/blast'
+    static readonly charts = 'peptide/bieChart'
+
 }
