@@ -35,6 +35,7 @@ export class PiperpepMapComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.dataSource.paginator = this.paginator;
   }
 
   ngAfterViewInit() {
@@ -43,10 +44,13 @@ export class PiperpepMapComponent implements OnInit {
   }
 
   getAnotherData() {
+    setTimeout(() => {
+      this.dataSource.paginator = this.paginator;
+    },1000);
     if (this.peptide_Form.valid) {
       this.isLoading = true;
       if (this.peptide_Form.value.categ_pep != null && this.peptide_Form.value.search_pep != null) {
-        this.peptide.getPeptide(this.peptide_Form.value.categ_pep, this.peptide_Form.value.search_pep,'Equal').subscribe((data: any[]) => {
+        this.peptide.getPeptide(this.peptide_Form.value.categ_pep, this.peptide_Form.value.search_pep,'equal').subscribe((data: any[]) => {
           this.showTable = true;
           if (data.length > 0) {
             this.dataSource.data = data;

@@ -45,7 +45,7 @@ export class PeptideComponent implements OnInit {
     Accession: { columns: ['position', 'accession', 'peptideSeq', 'action'], headers: ['S.No', 'Accession', 'Peptide Sequence', 'Details'] },
     Score: { columns: ['position', 'accession', 'score', 'peptideSeq', 'action'], headers: ['S.No', 'Accession', 'Score', 'Peptide Sequence', 'Details'] },
     'Peptide sequence': { columns: ['position', 'accession', 'peptideSeq', 'action'], headers: ['S.No', 'Accession', 'Peptide Sequence', 'Details'] },
-    'Peptide modification': { columns: ['position', 'peptideModification', 'action'], headers: ['S.No', 'Peptide Modification', 'Details'] },
+    'Peptide modification': { columns: ['position','accession','peptideSeq', 'peptideModification', 'action'], headers: ['S.No', 'Accession', 'Peptide Sequence','Peptide Modification', 'Details'] },
     'Peptide Length': { columns: ['position', 'accession', 'peptideSeq', 'peptideSeqLength', 'action'], headers: ['S.No', 'Accession', 'Peptide Sequence', 'Peptide Length', 'Details'] },
     'Peptide Mass': { columns: ['position', 'accession', 'peptideSeq', 'avgMass', 'action'], headers: ['S.No', 'Accession', 'Peptide Sequence', 'Peptide Mass', 'Details'] }
   };
@@ -83,9 +83,6 @@ export class PeptideComponent implements OnInit {
 
   ngOnInit() {
 
-    setTimeout(() => {
-      this.dataSource.paginator = this.paginator;
-    });
   }
 
 

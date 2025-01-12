@@ -31,7 +31,7 @@ export class DownloadComponent implements OnInit {
   ]
 
   title: any = '';
-  displayedColumns = ['position', 'accession', 'score', 'peptideSeq'];
+  displayedColumns = ['position', 'accession', 'peptideSeq','peptideSeqLength','score', ];
   download_Form!: FormGroup; //'description', 'peptideSeqLength', 'variety', 'avgMass', 'peptideModification'
   public score_result: any = '';
   showScore: { [key: number]: boolean } = {};

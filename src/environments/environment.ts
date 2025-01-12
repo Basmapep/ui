@@ -6,6 +6,8 @@ export const environment = {
   production: false,
   // serverUrl: 'http://192.168.118.135:8080'
   serverUrl: 'http://localhost:8080'
+  // serverUrl: 'https://4c2a-2401-4900-1cc8-f0b7-4919-ec0-ad4b-49fb.ngrok-free.app'
+
 
 };
 
