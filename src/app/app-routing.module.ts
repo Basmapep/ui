@@ -12,6 +12,7 @@ import { ContactComponent } from 'src/dashboard/contact/contact/contact.componen
 import { FileSubmissionComponent } from 'src/dashboard/file-submission/file-submission.component';
 import { HomeComponent } from 'src/dashboard/home/home/home.component';
 import { SearchPeptideComponent } from 'src/dashboard/search-peptide/search-peptide.component';
+import { TeamsPageComponent } from 'src/dashboard/teams-page/teams-page.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -19,7 +20,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'Sign-up', component: SignUpComponent },
   { path: 'contact', component: ContactComponent },
-  { path: 'team', component: TeamComponent },
+  { path: 'team', component: TeamsPageComponent },
   {
     path: "tools", component: ToolsComponent,},
   { path: 'search', component: PeptideComponent },

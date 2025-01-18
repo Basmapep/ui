@@ -82,7 +82,6 @@ export class FileSubmissionComponent implements OnInit {
 
     if (event.dataTransfer?.files) {
       const droppedFiles = Array.from(event.dataTransfer.files);
-      console.log('droppedFiles: ', droppedFiles);
       if (droppedFiles[0].type == 'text/csv') {
         droppedFiles.forEach((file) => {
           const reader = new FileReader();

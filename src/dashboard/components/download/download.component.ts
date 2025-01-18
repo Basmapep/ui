@@ -97,13 +97,11 @@ export class DownloadComponent implements OnInit {
 
   Select_Symbol(event: any) {
     let selected_Score = this.score.filter((item: any) => item.name == event.target.value)
-    console.log('selected_Score: ', selected_Score);
     this.download_Form.get('comparisonValue')?.setValue(selected_Score[0].comparison)
     this.symbolData = selected_Score[0].symbol
     this.download_Form.get('skills')?.value
 
     this.download_Form.get('skills')?.value.forEach((ite: any) => {
-      console.log('ite: ', ite);
       ite.symbol = selected_Score[0].symbol
       // ite.comparisonValue = selected_Score[0].comparison
     })
@@ -150,7 +148,6 @@ export class DownloadComponent implements OnInit {
       if (this.Download_skills.valid) {
         this.isLoading = true;
         tmdata.push(this.Download_skills.controls, this.symbolData)
-        console.log('tmdata: ', tmdata);
         const categ = this.download_Form.get('category_Pep')?.value
         tmdata.forEach((element: any) => {
           this.peptide.getPeptide(element[element.length - 1].value.category_Pep, element[element.length - 1].value.search_Pep.trim(), this.download_Form.get('comparisonValue')?.value).subscribe((data: any[]) => {

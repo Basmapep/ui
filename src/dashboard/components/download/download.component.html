@@ -46,7 +46,7 @@
 
       <form action="" [formGroup]="download_Form">
         <div class="row" formArrayName="skills">
-          <div *ngFor="let arr of Download_skills.controls; let i = index" [formGroupName]="i" class="row mb-3">
+          <div *ngFor="let arr of Download_skills.controls; let i = index" [formGroupName]="i" class="row">
             <div class="col-md-11">
               <div class="input-group">
 
@@ -96,6 +96,9 @@
           </div>
         </div>
       </form>
+      <div style=" color: #073B3A;">
+        Examples for search: Glutelin, Carbamidomethyl, Q0JJ36, PEP.SEQ = CGHHUYDAS, Score >= 20
+      </div>
       <!-- <input type="text" (keyup)="applyFilter($event)" /> -->
 
     </div>

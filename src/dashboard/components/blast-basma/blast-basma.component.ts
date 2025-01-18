@@ -45,7 +45,6 @@ export class BlastBasmaComponent implements OnInit {
       if (this.peptide_Form.value.blastSequence != null) {
         this.peptide.getBlastData(this.peptide_Form.value.blastSequence).subscribe(
           (data: string) => {
-            console.log('Raw response: ', data);
             this.blastData = data;
             this.isLoading = false;
             this.peptide_Form.reset();

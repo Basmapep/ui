@@ -54,7 +54,6 @@ export class PiperpepMapComponent implements OnInit {
           this.showTable = true;
           if (data.length > 0) {
             this.dataSource.data = data;
-            console.log('this.dataSource.data: ', this.dataSource.data);
             this.peptide_Form.reset();
             setTimeout(() => {
               this.isLoading = false;

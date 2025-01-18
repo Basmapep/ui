@@ -19,7 +19,7 @@ export class AppComponent {
       const currentRoute = this.router.url;
       this.hideNavAndFooter = currentRoute === '/login' || currentRoute === '/Sign-up';
       this.hideFooter1 = currentRoute === '/components/select-Sequence';
-      this.hideFooter2 = currentRoute === '/components/pepCal';
+      this.hideFooter2 = currentRoute === '/team';
       this.hideFooter = currentRoute === '/submission';
 
     });

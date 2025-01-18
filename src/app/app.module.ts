@@ -26,6 +26,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
 import { NgApexchartsModule } from "ng-apexcharts";
+import { TeamsPageComponent } from 'src/dashboard/teams-page/teams-page.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { NgApexchartsModule } from "ng-apexcharts";
     TeamComponent,
     HomeComponent,
     DownloadComponent,
+    TeamsPageComponent,
     // FileDragNDropDirective
   ],
   imports: [
