@@ -26,7 +26,7 @@ export class DownloadComponent implements OnInit {
     { name: 'Greater than', symbol: '>', comparison: 'greaterthan' },
     { name: 'Lesser than', symbol: '<', comparison: 'lesserthan' },
     { name: 'Equal to', symbol: '==', comparison: 'equal' },
-    { name: 'Greater than or equal to', symbol: '>=', comparison: 'greterthanequal' },
+    { name: 'Greater than or equal to', symbol: '>=', comparison: 'greaterthanequal' },
     { name: 'Lesser than or equal to', symbol: '<=', comparison: 'lesserthanequal' },
   ]
 
@@ -308,14 +308,14 @@ export class DownloadComponent implements OnInit {
           // tmdata.forEach((element: any) => {
           const searchValue = Number(symbols.search_Pep); // Convert to number
           if (isNaN(searchValue)) {
-            console.error('search_Pep is not a valid number:', symbols.search_Pep);
+           
             return;
           }
 
           const filteredResults = this.allDataTable.filter((item: any) => {
             const peptideSeqLength = Number(item.peptideSeqLength); // Convert to number
             if (isNaN(peptideSeqLength)) {
-              console.warn('Invalid peptideSeqLength value in item:', item);
+            
               return false; // Skip items where conversion fails
             }
             return peptideSeqLength > searchValue; // Apply the condition

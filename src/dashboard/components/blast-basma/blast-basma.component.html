@@ -1,9 +1,15 @@
-
 <!-- <div class="table-container"> -->
-    <div *ngIf="isLoading" class="loader-overlay">
-      <app-loading></app-loading>
-    </div>
+<div *ngIf="isLoading" class="loader-overlay">
+    <app-loading></app-loading>
+</div>
 <!-- </div> -->
+<div>
+    <ul class="breadcrumb">
+        <li><a href="/home">Home</a></li>
+        <li><a href="/tools">Tools</a></li>
+        <li>Blast Tool</li>
+    </ul>
+</div>
 <div class="max">
     <div class="text1">
         <div>BasmaPep Blast Tool</div>
@@ -47,9 +53,9 @@
     </form>
 </div>
 
-<div style="max-width: 900px; margin: 0 auto; padding-top: 20px; padding-bottom: 50%;">
+<div class="blast">
     <pre>{{blastData}}</pre>
-    
+
 </div>
 
 

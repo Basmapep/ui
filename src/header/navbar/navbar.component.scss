@@ -23,6 +23,7 @@
 .selectedclr {
   color: #93DC5C !important;
 }
+
 .active {
   color: #93DC5C !important;
 }
@@ -192,6 +193,7 @@ a {
   color: var(--nav-button-hover-text-color);
   background: var(--nav-button-hover-bg);
 }
+
 
 .showName {
 
@@ -485,3 +487,8 @@ a {
     background-color: var(--online-status);
   }
 }
+
+// .popup-window ul button:hover,
+// .popup-window ul button .display:hover {
+//   display: none;
+// }

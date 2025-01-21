@@ -18,7 +18,7 @@ export class AppComponent {
     this.router.events.subscribe(() => {
       const currentRoute = this.router.url;
       this.hideNavAndFooter = currentRoute === '/login' || currentRoute === '/Sign-up';
-      this.hideFooter1 = currentRoute === '/components/select-Sequence';
+      this.hideFooter1 = currentRoute === '/components/piperMap';
       this.hideFooter2 = currentRoute === '/team';
       this.hideFooter = currentRoute === '/submission';
 

@@ -24,7 +24,7 @@ export class PiperpepMapComponent implements OnInit {
     categ_pep: ['Peptide sequence', Validators.required],
     search_pep: [
       '',
-      [Validators.required, Validators.pattern(/^\S*$/)] // No spaces allowed
+      [Validators.required] // No spaces allowed  Validators.pattern(/^\S*$/)
     ]
   })
 
@@ -50,11 +50,12 @@ export class PiperpepMapComponent implements OnInit {
     if (this.peptide_Form.valid) {
       this.isLoading = true;
       if (this.peptide_Form.value.categ_pep != null && this.peptide_Form.value.search_pep != null) {
-        this.peptide.getPeptide(this.peptide_Form.value.categ_pep, this.peptide_Form.value.search_pep,'equal').subscribe((data: any[]) => {
+        this.peptide.getPeptide(this.peptide_Form.value.categ_pep, this.peptide_Form.value.search_pep.trim(),'equal').subscribe((data: any[]) => {
           this.showTable = true;
           if (data.length > 0) {
             this.dataSource.data = data;
             this.peptide_Form.reset();
+            this.peptide_Form.get('categ_pep')?.setValue('Peptide sequence')
             setTimeout(() => {
               this.isLoading = false;
             }, 500);

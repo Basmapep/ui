@@ -13,9 +13,18 @@ export class NavbarComponent implements OnInit {
   userId: number = 1;
   userName: string = '';
   activeRoute: string = '/home';
+  imageSrc: string = '../../assets/icons/icons8-log-out-50.png';
 
   constructor(private route: Router, public dialog: MatDialog) {
     this.userName = localStorage.getItem('UserName') || '';
+  }
+
+  onMouseOver() {
+    this.imageSrc = '../../assets/icons/log-white.png';
+  }
+
+  onMouseOut() {
+    this.imageSrc = '../../assets/icons/icons8-log-out-50.png';
   }
 
   ngOnInit(): void {

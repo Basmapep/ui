@@ -23,7 +23,7 @@ export class PeptideComponent implements OnInit {
     { name: 'Greater than', symbol: '>', comparison: 'greaterthan' },
     { name: 'Lesser than', symbol: '<', comparison: 'lesserthan' },
     { name: 'Equal to', symbol: '==', comparison: 'equal' },
-    { name: 'Greater than or equal to', symbol: '>=', comparison: 'greterthanequal' },
+    { name: 'Greater than or equal to', symbol: '>=', comparison: 'greaterthanequal' },
     { name: 'Lesser than or equal to', symbol: '<=', comparison: 'lesserthanequal' },
     // { name: 'Range' },
   ]

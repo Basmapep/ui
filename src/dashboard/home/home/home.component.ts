@@ -94,7 +94,7 @@ export class HomeComponent implements OnInit {
       "41-60",
       "61-80",
       "81-100"
-    ]
+    ],
   };
 
   public chartOptionScore: ChartOptions = {
