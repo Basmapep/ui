@@ -157,6 +157,7 @@ export class DownloadComponent implements OnInit {
               setTimeout(() => {
                 this.isLoading = false;
               }, 500);
+              
               // if (element[element.length - 1].value.category_Pep == 'Score') {
               //   if (tmdata[1] == '>') {
               //     const filteredResults = data.filter(ite => ite.score > element[element.length - 1].value.search_Pep);
