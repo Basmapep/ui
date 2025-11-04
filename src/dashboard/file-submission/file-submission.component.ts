@@ -25,9 +25,9 @@ export class FileSubmissionComponent implements OnInit {
   fileForm!: FormGroup;
   // files: File[] = [];
   ArrayFile: any = [];
-  userName: string = 'Samsudhan';
+  userName: any = '';
   emailId: string = 'samsudhan23@gmail.com';
-  phoneNo: number = 9865927380;
+  phoneNo: any = 0;
   constructor(private _snackBar: MatSnackBar,
     public dialog: MatDialog,
     private toast: ToastrService,
@@ -39,6 +39,8 @@ export class FileSubmissionComponent implements OnInit {
     })
   }
   ngOnInit(): void {
+    this.userName = localStorage.getItem('UserName')
+    this.phoneNo = localStorage.getItem('phoneNo')
   }
 
   // onFileChange(pFileList: any){
