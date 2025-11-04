@@ -42,5 +42,11 @@ export class PeptideService {
     })
   }
   
-
+  uploadMapTool(mailRequest: any): Observable<any> {
+    // const payload = { userId: userId, file: base64, filename: fileName };
+    // const headers = new HttpHeaders({
+    //   'Content-Type': 'application/json'
+    // });
+    return this.http.post<any>(environment.serverUrl + ApiUrls.version + ApiUrls.mapToolFile, mailRequest);
+  }
 }

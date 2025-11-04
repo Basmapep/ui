@@ -6,5 +6,6 @@ export class ApiUrls {
     static readonly login = 'UserDetails/login'
     static readonly blast = 'peptide/blast'
     static readonly charts = 'peptide/bieChart'
+    static readonly mapToolFile = 'peptide/map';
 
 }

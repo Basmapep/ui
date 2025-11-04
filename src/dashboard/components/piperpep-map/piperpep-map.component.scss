@@ -197,3 +197,285 @@ ul.breadcrumb li a:hover {
     color: #01447e;
     text-decoration: underline;
 }
+
+.container {
+    // width: 400px;
+    margin: 20px auto;
+    text-align: center;
+
+    border: 2px dashed #ccc;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    cursor: pointer;
+}
+
+.drag-drop-area {
+    border: 2px dashed #ccc;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    // height: 300px;
+}
+
+.drag-over {
+    border-color: #007bff;
+    background-color: #e6f7ff;
+}
+
+
+//button
+
+/* From Uiverse.io by omar49511 */
+.container-btn-file {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    background-color: #307750;
+    color: #fff;
+    border-style: none;
+    padding: 1em 2em;
+    border-radius: 0.5em;
+    overflow: hidden;
+    z-index: 1;
+    box-shadow: 4px 8px 10px -3px rgba(0, 0, 0, 0.356);
+    transition: all 250ms;
+     margin-top: 10px;
+}
+
+.container-btn-file input[type="file"] {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.container-btn-file>svg {
+    margin-right: 1em;
+}
+
+.container-btn-file::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 0;
+    border-radius: 0.5em;
+    background-color: #469b61;
+    z-index: -1;
+    transition: all 350ms;
+}
+
+.container-btn-file:hover::before {
+    width: 100%;
+}
+
+.userDetails {
+    background-color: #5cbf7c;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 8px;
+
+}
+
+.details {
+    font-size: 20px;
+    // color: white;
+}
+
+//loader
+.loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    --color: #307750;
+    --animation: 2s ease-in-out infinite;
+}
+
+.loader .circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 20px;
+    height: 20px;
+    border: solid 2px var(--color);
+    border-radius: 50%;
+    margin: 0 10px;
+    background-color: transparent;
+    animation: circle-keys var(--animation);
+}
+
+.loader .circle .dot {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: var(--color);
+    animation: dot-keys var(--animation);
+}
+
+.loader .circle .outline {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    animation: outline-keys var(--animation);
+}
+
+.circle:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.circle:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+.circle:nth-child(4) {
+    animation-delay: 0.9s;
+}
+
+.circle:nth-child(5) {
+    animation-delay: 1.2s;
+}
+
+.circle:nth-child(2) .dot {
+    animation-delay: 0.3s;
+}
+
+.circle:nth-child(3) .dot {
+    animation-delay: 0.6s;
+}
+
+.circle:nth-child(4) .dot {
+    animation-delay: 0.9s;
+}
+
+.circle:nth-child(5) .dot {
+    animation-delay: 1.2s;
+}
+
+.circle:nth-child(1) .outline {
+    animation-delay: 0.9s;
+}
+
+.circle:nth-child(2) .outline {
+    animation-delay: 1.2s;
+}
+
+.circle:nth-child(3) .outline {
+    animation-delay: 1.5s;
+}
+
+.circle:nth-child(4) .outline {
+    animation-delay: 1.8s;
+}
+
+.circle:nth-child(5) .outline {
+    animation-delay: 2.1s;
+}
+
+@keyframes circle-keys {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.5);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes dot-keys {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(0);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes outline-keys {
+    0% {
+        transform: scale(0);
+        outline: solid 20px var(--color);
+        outline-offset: 0;
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1);
+        outline: solid 0 transparent;
+        outline-offset: 20px;
+        opacity: 0;
+    }
+}
+
+.filesupload {
+    max-width: 1320px;
+    margin: 20px auto;
+    padding-bottom: 20px;
+}
+
+
+.fileItem1 {
+    // width: calc(25% - 6px);
+    width: 100%;
+    overflow: hidden;
+    height: fit-content;
+    margin: 3px;
+    padding: 10px;
+    display: block;
+    position: relative;
+    float: left;
+    border: 2px dashed #778899;
+    border-radius: 5px;
+    transition: .3s ease;
+}
+
+.fileItem1:hover {
+    border: 2px solid #e19494;
+    background-color: #e19494;
+}
+
+.fileItem1:hover .fileItemIcon::before {
+    content: "\f00d";
+    color: whitesmoke;
+}
+
+.fileItem1:hover .fileItemText {
+    color: whitesmoke;
+}
+
+.fileItemIconDiv {
+    text-align: center;
+}
+
+.fileItemIcon::before {
+    font-style: normal;
+    content: "\f15b";
+    color: #778899;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+}
+
+.fileItemText {
+    text-align: center;
+    margin-top: 10px;
+    height: 40px;
+}

@@ -31,7 +31,7 @@ export class DownloadComponent implements OnInit {
   ]
 
   title: any = '';
-  displayedColumns = ['position', 'accession', 'peptideSeq','peptideSeqLength','score', ];
+  displayedColumns = ['position', 'accession', 'peptideSeq', 'peptideSeqLength', 'score',];
   download_Form!: FormGroup; //'description', 'peptideSeqLength', 'variety', 'avgMass', 'peptideModification'
   public score_result: any = '';
   showScore: { [key: number]: boolean } = {};
@@ -114,9 +114,9 @@ export class DownloadComponent implements OnInit {
       if (category.target.value === 'Score' || category.target.value == 'Peptide Length' || category.target.value == 'Peptide Mass') {
         this.showScore[index] = true;
         this.download_Form.get('comparisonValue')?.setValue(this.score[0].comparison)
-        this.Download_skills.at(0).patchValue({
-          symbols_Pep: this.score[0].name
-        });
+        // this.Download_skills.at(0).patchValue({
+        //   symbols_Pep: this.score[0].name
+        // });
       } else {
         this.showScore[index] = false;
         this.Download_skills.controls[0].value.symbols_Pep = '';
@@ -150,107 +150,109 @@ export class DownloadComponent implements OnInit {
         tmdata.push(this.Download_skills.controls, this.symbolData)
         const categ = this.download_Form.get('category_Pep')?.value
         tmdata.forEach((element: any) => {
-          this.peptide.getPeptide(element[element.length - 1].value.category_Pep, element[element.length - 1].value.search_Pep.trim(), this.download_Form.get('comparisonValue')?.value).subscribe((data: any[]) => {
+          this.peptide.getPeptide(element[element.length - 1]?.value?.category_Pep,
+            element[element.length - 1]?.value?.search_Pep.trim(),
+            element[element.length - 1]?.value?.symbols_Pep).subscribe((data: any[]) => {
 
-            if (data.length > 0) {
+              if (data.length > 0) {
 
-              setTimeout(() => {
-                this.isLoading = false;
-              }, 500);
-              
-              // if (element[element.length - 1].value.category_Pep == 'Score') {
-              //   if (tmdata[1] == '>') {
-              //     const filteredResults = data.filter(ite => ite.score > element[element.length - 1].value.search_Pep);
-              //     this.dataSource.data = filteredResults;
+                setTimeout(() => {
+                  this.isLoading = false;
+                }, 500);
 
-              //     this.allDataTable = filteredResults;
-              //   }
-              //   else if (tmdata[1] == '<') {
-              //     const filteredResults = data.filter(ite => ite.score < element[element.length - 1].value.search_Pep);
-              //     this.dataSource.data = filteredResults;
-              //     this.allDataTable = filteredResults;
-              //   } else if (tmdata[1] == '==') {
-              //     const filteredResults = data.filter(ite => ite.score == element[element.length - 1].value.search_Pep);
-              //     this.dataSource.data = filteredResults;
-              //     this.allDataTable = filteredResults;
-              //   } else if (tmdata[1] == '>=') {
-              //     const filteredResults = data.filter(ite => ite.score >= element[element.length - 1].value.search_Pep);
-              //     this.dataSource.data = filteredResults;
-              //     this.allDataTable = filteredResults;
-              //   } else if (tmdata[1] == '<=') {
-              //     const filteredResults = data.filter(ite => ite.score <= element[element.length - 1].value.search_Pep);
-              //     this.dataSource.data = filteredResults;
-              //     this.allDataTable = filteredResults;
-              //   }
-              // }
-              // else if (element[element.length - 1].value.category_Pep == 'Peptide Length') {
-              //   if (this.symbolData == '>') {
-              //     const filteredResults = data.filter(ite => ite.peptideSeqLength > element[element.length - 1].value.search_Pep);
-              //     this.dataSource.data = filteredResults;
-              //     this.allDataTable = filteredResults;
-              //   }
-              //   else if (this.symbolData == '<') {
-              //     const filteredResults = data.filter(ite => ite.peptideSeqLength < element[element.length - 1].value.search_Pep);
-              //     this.dataSource.data = filteredResults;
-              //     this.allDataTable = filteredResults;
-              //   } else if (this.symbolData == '==') {
-              //     const filteredResults = data.filter(ite => ite.peptideSeqLength == element[element.length - 1].value.search_Pep);
-              //     this.dataSource.data = filteredResults;
-              //     this.allDataTable = filteredResults;
-              //   } else if (this.symbolData == '>=') {
-              //     const filteredResults = data.filter(ite => ite.peptideSeqLength >= element[element.length - 1].value.search_Pep);
-              //     this.dataSource.data = filteredResults;
-              //     this.allDataTable = filteredResults;
-              //   } else if (this.symbolData == '<=') {
-              //     const filteredResults = data.filter(ite => ite.peptideSeqLength <= element[element.length - 1].value.search_Pep);
-              //     this.dataSource.data = filteredResults;
-              //     this.allDataTable = filteredResults;
-              //   }
-              // }
-              // else if (element[element.length - 1].value.category_Pep == 'Peptide Mass') {
-              //   if (this.symbolData == '>') {
-              //     const filteredResults = data.filter(ite => ite.avgMass > element[element.length - 1].value.search_Pep);
-              //     this.dataSource.data = filteredResults;
-              //     this.allDataTable = filteredResults;
-              //   }
-              //   else if (this.symbolData == '<') {
-              //     const filteredResults = data.filter(ite => ite.avgMass < element[element.length - 1].value.search_Pep);
-              //     this.dataSource.data = filteredResults;
-              //     this.allDataTable = filteredResults;
-              //   } else if (this.symbolData == '==') {
-              //     const filteredResults = data.filter(ite => ite.avgMass == element[element.length - 1].value.search_Pep);
-              //     this.dataSource.data = filteredResults;
-              //     this.allDataTable = filteredResults;
-              //   } else if (this.symbolData == '>=') {
-              //     const filteredResults = data.filter(ite => ite.avgMass >= element[element.length - 1].value.search_Pep);
-              //     this.dataSource.data = filteredResults;
-              //     this.allDataTable = filteredResults;
-              //   } else if (this.symbolData == '<=') {
-              //     const filteredResults = data.filter(ite => ite.avgMass <= element[element.length - 1].value.search_Pep);
-              //     this.dataSource.data = filteredResults;
-              //     this.allDataTable = filteredResults;
-              //   }
-              // }
+                // if (element[element.length - 1].value.category_Pep == 'Score') {
+                //   if (tmdata[1] == '>') {
+                //     const filteredResults = data.filter(ite => ite.score > element[element.length - 1].value.search_Pep);
+                //     this.dataSource.data = filteredResults;
 
-              // else {
-              this.dataSource.data = data;
-              // this.dataSource = new MatTableDataSource(data);
-              this.allDataTable = data;
-              setTimeout(() => {
-                this.isLoading = false;
-              }, 500);
-              // }
+                //     this.allDataTable = filteredResults;
+                //   }
+                //   else if (tmdata[1] == '<') {
+                //     const filteredResults = data.filter(ite => ite.score < element[element.length - 1].value.search_Pep);
+                //     this.dataSource.data = filteredResults;
+                //     this.allDataTable = filteredResults;
+                //   } else if (tmdata[1] == '==') {
+                //     const filteredResults = data.filter(ite => ite.score == element[element.length - 1].value.search_Pep);
+                //     this.dataSource.data = filteredResults;
+                //     this.allDataTable = filteredResults;
+                //   } else if (tmdata[1] == '>=') {
+                //     const filteredResults = data.filter(ite => ite.score >= element[element.length - 1].value.search_Pep);
+                //     this.dataSource.data = filteredResults;
+                //     this.allDataTable = filteredResults;
+                //   } else if (tmdata[1] == '<=') {
+                //     const filteredResults = data.filter(ite => ite.score <= element[element.length - 1].value.search_Pep);
+                //     this.dataSource.data = filteredResults;
+                //     this.allDataTable = filteredResults;
+                //   }
+                // }
+                // else if (element[element.length - 1].value.category_Pep == 'Peptide Length') {
+                //   if (this.symbolData == '>') {
+                //     const filteredResults = data.filter(ite => ite.peptideSeqLength > element[element.length - 1].value.search_Pep);
+                //     this.dataSource.data = filteredResults;
+                //     this.allDataTable = filteredResults;
+                //   }
+                //   else if (this.symbolData == '<') {
+                //     const filteredResults = data.filter(ite => ite.peptideSeqLength < element[element.length - 1].value.search_Pep);
+                //     this.dataSource.data = filteredResults;
+                //     this.allDataTable = filteredResults;
+                //   } else if (this.symbolData == '==') {
+                //     const filteredResults = data.filter(ite => ite.peptideSeqLength == element[element.length - 1].value.search_Pep);
+                //     this.dataSource.data = filteredResults;
+                //     this.allDataTable = filteredResults;
+                //   } else if (this.symbolData == '>=') {
+                //     const filteredResults = data.filter(ite => ite.peptideSeqLength >= element[element.length - 1].value.search_Pep);
+                //     this.dataSource.data = filteredResults;
+                //     this.allDataTable = filteredResults;
+                //   } else if (this.symbolData == '<=') {
+                //     const filteredResults = data.filter(ite => ite.peptideSeqLength <= element[element.length - 1].value.search_Pep);
+                //     this.dataSource.data = filteredResults;
+                //     this.allDataTable = filteredResults;
+                //   }
+                // }
+                // else if (element[element.length - 1].value.category_Pep == 'Peptide Mass') {
+                //   if (this.symbolData == '>') {
+                //     const filteredResults = data.filter(ite => ite.avgMass > element[element.length - 1].value.search_Pep);
+                //     this.dataSource.data = filteredResults;
+                //     this.allDataTable = filteredResults;
+                //   }
+                //   else if (this.symbolData == '<') {
+                //     const filteredResults = data.filter(ite => ite.avgMass < element[element.length - 1].value.search_Pep);
+                //     this.dataSource.data = filteredResults;
+                //     this.allDataTable = filteredResults;
+                //   } else if (this.symbolData == '==') {
+                //     const filteredResults = data.filter(ite => ite.avgMass == element[element.length - 1].value.search_Pep);
+                //     this.dataSource.data = filteredResults;
+                //     this.allDataTable = filteredResults;
+                //   } else if (this.symbolData == '>=') {
+                //     const filteredResults = data.filter(ite => ite.avgMass >= element[element.length - 1].value.search_Pep);
+                //     this.dataSource.data = filteredResults;
+                //     this.allDataTable = filteredResults;
+                //   } else if (this.symbolData == '<=') {
+                //     const filteredResults = data.filter(ite => ite.avgMass <= element[element.length - 1].value.search_Pep);
+                //     this.dataSource.data = filteredResults;
+                //     this.allDataTable = filteredResults;
+                //   }
+                // }
+
+                // else {
+                this.dataSource.data = data;
+                // this.dataSource = new MatTableDataSource(data);
+                this.allDataTable = data;
+                setTimeout(() => {
+                  this.isLoading = false;
+                }, 500);
+                // }
 
 
 
-            } else {
-              this.dataSource.data = []
-              this.allDataTable = [];
-              setTimeout(() => {
-                this.isLoading = false;
-              }, 500);
-            }
-          })
+              } else {
+                this.dataSource.data = []
+                this.allDataTable = [];
+                setTimeout(() => {
+                  this.isLoading = false;
+                }, 500);
+              }
+            })
         });
       }
     } else {
@@ -260,8 +262,11 @@ export class DownloadComponent implements OnInit {
         // tmdata.push(this.Download_skills.controls, ...this.symbolData)
         if (symbols.symbols_Pep == 'Greater than') {
           // tmdata.forEach((element: any) => {
-          const filteredResults = this.allDataTable.filter((item: any) => item.score > symbols.search_Pep)
-          this.dataSource.data = filteredResults
+          const filteredResults = this.allDataTable.filter((item: any) => {
+            const score = parseFloat(item.score);
+            return !isNaN(score) && score > symbols.search_Pep;
+          });
+          this.dataSource.data = filteredResults;
           // this.searchValue = element[element.length - 1].value.search_Pep;
           // this.dataSource.filter = this.searchValue.trim().toLowerCase();
           setTimeout(() => {
@@ -272,29 +277,38 @@ export class DownloadComponent implements OnInit {
 
         }
         else if (symbols.symbols_Pep == 'Lesser than') {
-          const filteredResults = this.allDataTable.filter(ite => ite.score < symbols.search_Pep);
+          const filteredResults = this.allDataTable.filter((item: any) => {
+            const score = parseFloat(item.score);
+            return !isNaN(score) && score < symbols.search_Pep;
+          });
           this.dataSource.data = filteredResults;
           setTimeout(() => {
             this.isLoading = false;
           }, 500);
 
         } else if (symbols.symbols_Pep == 'Equal to') {
-          const filteredResults = this.allDataTable.filter(ite => ite.score == symbols.search_Pep);
-          this.dataSource.data = filteredResults;
+          const filteredResults = this.allDataTable.filter((item: any) => {
+            const score = parseFloat(item.score);
+            return !isNaN(score) && score == symbols.search_Pep;
+          }); this.dataSource.data = filteredResults;
           setTimeout(() => {
             this.isLoading = false;
           }, 500);
 
         } else if (symbols.symbols_Pep == 'Greater than or equal to') {
-          const filteredResults = this.allDataTable.filter(ite => ite.score >= symbols.search_Pep);
-          this.dataSource.data = filteredResults;
+          const filteredResults = this.allDataTable.filter((item: any) => {
+            const score = parseFloat(item.score);
+            return !isNaN(score) && score >= symbols.search_Pep;
+          }); this.dataSource.data = filteredResults;
           setTimeout(() => {
             this.isLoading = false;
           }, 500);
 
         } else if (symbols.symbols_Pep == 'Lesser than or equal to') {
-          const filteredResults = this.allDataTable.filter(ite => ite.score <= symbols.search_Pep);
-          this.dataSource.data = filteredResults;
+          const filteredResults = this.allDataTable.filter((item: any) => {
+            const score = parseFloat(item.score);
+            return !isNaN(score) && score <= symbols.search_Pep;
+          }); this.dataSource.data = filteredResults;
           setTimeout(() => {
             this.isLoading = false;
           }, 500);
@@ -309,14 +323,14 @@ export class DownloadComponent implements OnInit {
           // tmdata.forEach((element: any) => {
           const searchValue = Number(symbols.search_Pep); // Convert to number
           if (isNaN(searchValue)) {
-           
+
             return;
           }
 
           const filteredResults = this.allDataTable.filter((item: any) => {
             const peptideSeqLength = Number(item.peptideSeqLength); // Convert to number
             if (isNaN(peptideSeqLength)) {
-            
+
               return false; // Skip items where conversion fails
             }
             return peptideSeqLength > searchValue; // Apply the condition
